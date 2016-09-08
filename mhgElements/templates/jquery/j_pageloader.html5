@@ -1,0 +1,34 @@
+<?php
+/**
+ * Contao 3 Extension [mhgElements]
+ *
+ * Copyright (c) 2016 Medienhaus Gersöne UG | Pierre Gersöne
+ *
+ * @package     mhgElements
+ * @link        http://www.medienhaus-gersoene.de
+ * @license     propitary licence
+ */
+
+/**
+ * template pageloader
+ */
+$GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/pageloader.css';
+?>
+<div id="pageloader" class="mod_pageloader">
+    <div class="status_indicator">
+        <div class="cube_puls"></div>
+        <p><?php echo $GLOBALS['TL_LANG']['loading'];?></p>
+    </div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+    $(window).load(function() {
+        var t = 50;
+        setTimeout(function() {
+            $('#pageloader .status_indicator').fadeOut(t);
+            $('#pageloader').delay(t).fadeOut(t);
+        }, t);
+    });
+//]]>
+</script>
