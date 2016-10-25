@@ -1,17 +1,4 @@
 <?php
-/**
- * Contao 3 Extension [mhgElements]
- *
- * Copyright (c) 2016 Medienhaus Gersöne UG | Pierre Gersöne
- *
- * @package     mhgElements
- * @link        http://www.medienhaus-gersoene.de
- * @license     propitary licence
- */
-
-/**
- * template pageloader
- */
 $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/pageloader.css';
 ?>
 <div id="pageloader" class="mod_pageloader">

@@ -1,12 +1,3 @@
-/**
- * Contao 3 Extension [mhgElements]
- *
- * Copyright (c) 2016 Medienhaus Gersöne UG | Pierre Gersöne
- *
- * @package     mhgElements
- * @link        http://www.medienhaus-gersoene.de
- * @license     propitary licence
- */
 /*!
 Waypoints - 3.1.1
 Copyright © 2011-2015 Caleb Troughton

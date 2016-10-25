@@ -1,64 +1,116 @@
 <?php
-/**
- * Contao 3 Extension [mhgElements]
- *
- * Copyright (c) 2016 Medienhaus Gersöne UG | Pierre Gersöne
- *
- * @package     mhgElements
- * @link        http://www.medienhaus-gersoene.de
- * @license     propitary licence
- */
 namespace mhg;
 
-class ContentText extends \Contao\ContentText {
+class ContentText extends \Contao\ContentText
+    {
 
-    public function compile() {
+    public function compile()
+        {
         parent::compile();
-
-        // text animation
-        if ($this->textAnimationType) {
-            if ($this->textAnimationType === 'random') {
+        
+        
+        // headline animation
+        if( $this->headlineAnimationType )
+            {
+            if( $this->headlineAnimationType === 'random' )
+                {
                 $types = $GLOBALS['TL_MHG']['animationTypes'];
-                unset($types['random']);
-                $textAnimationType = $types[array_rand($types)];
-            } else {
-                $textAnimationType = $this->textAnimationType;
+                unset( $types['random'] );
+                $headlineAnimationType = $types[array_rand( $types )];
+                }
+            else
+                {
+                $headlineAnimationType = $this->headlineAnimationType;
+                }
+
+            $strAnimation = 'animate_' . $headlineAnimationType;
+
+            if( $this->headlineAnimationDelay )
+                {
+                $strAnimation.= ' d' . $this->headlineAnimationDelay;
+                }
+
+            $strAnimation .= $this->headlineAnimationType . ' animate';
+                
+            if( $this->headlineAnimationOnce )
+                {
+                $strAnimation.= ' animateOnce';
+                }
+
+            $this->Template->headlineAnimationClass = ' ' . $strAnimation;
             }
+        
+        
+        
+        // text animation
+        if( $this->textAnimationType )
+            {
+            if( $this->textAnimationType === 'random' )
+                {
+                $types = $GLOBALS['TL_MHG']['animationTypes'];
+                unset( $types['random'] );
+                $textAnimationType = $types[array_rand( $types )];
+                }
+            else
+                {
+                $textAnimationType = $this->textAnimationType;
+                }
 
             $strAnimation = 'animate_' . $textAnimationType;
 
-            if ($this->textAnimationDelay) {
+            if( $this->textAnimationDelay )
+                {
                 $strAnimation.= ' d' . $this->textAnimationDelay;
-            }
-            /* $strAnimation = $this->textAnimationType . ' animate'; if( $this->textAnimationOnce ) { $strAnimation.= ' animateOnce'; } */
+                }
+ 
+            if( $this->textAnimationOnce )
+                {
+                $strAnimation.= ' animateOnce';
+                }
+                
+
             $this->Template->textAnimationClass = ' ' . $strAnimation;
-        }
+            }
+
 
         // image Animation
-        if ($this->imageAnimationType) {
-            if ($this->imageAnimationType === 'random') {
+        if( $this->imageAnimationType )
+            {
+            if( $this->imageAnimationType === 'random' )
+                {
                 $types = $GLOBALS['TL_MHG']['animationTypes'];
-                unset($types['random']);
-                $imageAnimationType = $types[array_rand($types)];
-            } else {
+                unset( $types['random'] );
+                $imageAnimationType = $types[array_rand( $types )];
+                }
+            else
+                {
                 $imageAnimationType = $this->imageAnimationType;
-            }
+                }
 
-            if ($imageAnimationType === 'parallax') {
+
+            if( $imageAnimationType === 'parallax' )
+                {
                 $strAnimation = $imageAnimationType . ' animate';
 
                 $strClass = $this->cssID[1] ? $this->cssID[1] . ' parallax fullsize' : 'parallax fullsize';
-                $this->cssID = array($this->cssID[0], $strClass);
-            } else {
+                $this->cssID = array( $this->cssID[0], $strClass );
+                }
+            else
+                {
                 $strAnimation = 'animate_' . $imageAnimationType;
-            }
+                }
 
-            if ($this->imageAnimationDelay) {
+            if( $this->imageAnimationDelay )
+                {
                 $strAnimation.= ' d' . $this->imageAnimationDelay;
-            }
-            /* if( $this->imageAnimationOnce ) {$strAnimation.= ' animateOnce';} */
+                }
+
+            if( $this->imageAnimationOnce )
+                {
+                $strAnimation.= ' animateOnce';
+                }
 
             $this->Template->imageAnimationClass = ' ' . $strAnimation;
+            }
         }
     }
-}

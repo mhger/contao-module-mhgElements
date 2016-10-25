@@ -1,15 +1,5 @@
-<?php
-/**
- * Contao 3 Extension [mhgElements]
- *
- * Copyright (c) 2016 Medienhaus Gersöne UG | Pierre Gersöne
- *
- * @package     mhgElements
- * @link        http://www.medienhaus-gersoene.de
- * @license     propitary licence
- */
-
-/**
- * global language settings
- */
+<?php 
 $GLOBALS['TL_LANG']['loading'] = 'Seite wird geladen';
+
+$GLOBALS['TL_LANG']['CTE']['exitIntentStart'] = array('ExitIntent Umschlag Start');
+$GLOBALS['TL_LANG']['CTE']['exitIntentStop'] = array('ExitIntent Umschlag Ende');

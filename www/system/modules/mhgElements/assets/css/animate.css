@@ -1,16 +1,7 @@
-/**
- * Contao 3 Extension [mhgElements]
- *
- * Copyright (c) 2016 Medienhaus Gersöne UG | Pierre Gersöne
- *
- * @package     mhgElements
- * @link        http://www.medienhaus-gersoene.de
- * @license     propitary licence
- */
 
-/*
+/**
  * animate.css
-*/
+**/
 .animate_start {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;

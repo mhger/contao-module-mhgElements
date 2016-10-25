@@ -1,21 +1,15 @@
-<?php 
-/**
- * Contao 3 Extension [mhgElements]
- *
- * Copyright (c) 2016 Medienhaus Gersöne UG | Pierre Gersöne
- *
- * @package     mhgElements
- * @link        http://www.medienhaus-gersoene.de
- * @license     propitary licence
- */
-
-/**
- * template content element text
- */
-$this->extend( 'block_searchable' );
-?>
-
+<?php #$this->extend( 'block_searchable' );?>
+ 
 <?php $this->block( 'content' );?>
+
+<?php if ($this->headline): ?>
+
+<<?= $this->hl ?> class="<?= $this->class ?><?=$this->headlineAnimationClass?>" <?= $this->cssID ?> <?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
+  <?= $this->headline ?>
+</<?= $this->hl ?>>
+    
+<?php endif; ?>
+
 
 <?php if( !$this->addBefore ):?>
     <div class="text_container<?php echo $this->textAnimationClass ?>">

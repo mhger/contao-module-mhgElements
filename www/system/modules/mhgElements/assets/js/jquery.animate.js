@@ -1,11 +1,7 @@
-/**
- * Contao 3 Extension [mhgElements]
- *
- * Copyright (c) 2016 Medienhaus Gersöne UG | Pierre Gersöne
- *
- * @package     mhgElements
- * @link        http://www.medienhaus-gersoene.de
- * @license     propitary licence
+/*!
+ * mhgElements
+ * Copyright © 2015 Medienhaus Gersöne UG (haftungsbeschränkt)
+ * http://www,medienhaus-gersoene.de
  */
 
 $(window).load(function() {
@@ -13,10 +9,13 @@ $(window).load(function() {
     if(jQuery().waypoint) {
         jQuery('.animate_fade, .animate_bounce, .animate_shake, .animate_atf, .animate_afc, .animate_afl, .animate_afr, .animate_aft, .animate_afb, .animate_wfc, ' +
             '.animate_hfc, .animate_rfc, .animate_rfl, .animate_rfr').each(function() {
+                
             var $e = jQuery(this);
+            
             new Waypoint({
                 element: this,
                 handler: function() {
+                    
                     if(!$e.hasClass('animate_start')) {
                         setTimeout(function() {
                             $e.addClass('animate_start');
@@ -57,5 +56,42 @@ $(window).load(function() {
                 offset: '85%'
             });
         });
+    }
+});
+
+
+//if scrolled to top, restart animations
+$(document).scroll(function(pos) {
+    if ( $(document).scrollTop() === 0 ) {
+        
+        $('.animate_start').removeClass('animate_start');
+        
+        if(jQuery().waypoint) {
+        jQuery('.animate_fade, .animate_bounce, .animate_shake, .animate_atf, .animate_afc, .animate_afl, .animate_afr, .animate_aft, .animate_afb, .animate_wfc, ' +
+            '.animate_hfc, .animate_rfc, .animate_rfl, .animate_rfr').each(function() {
+            var $e = jQuery(this);
+            
+                new Waypoint({
+                element: this,
+                handler: function() {
+                    
+                    if(!$e.hasClass('animate_start')) {
+                        setTimeout(function() {
+                            $e.addClass('animate_start');
+                        }, 20);
+                        this.destroy();
+                    }
+                    
+                    if ($e.hasClass('animateOnce')) {
+                        $e.removeClass('animate_fade animate_bounce animate_shake animate_atf animate_afc animate_afl animate_afr animate_aft animate_afb animate_wfc ' +
+                        'animate_hfc animate_rfc animate_rfl animate_rfr d1 d2 d3 d4 d5 d6 d7 d8 d9');
+                    }
+                    
+                },
+                offset: '85%'
+                });
+
+        });
+        }
     }
 });

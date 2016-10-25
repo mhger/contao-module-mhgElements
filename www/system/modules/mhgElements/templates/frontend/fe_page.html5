@@ -1,18 +1,3 @@
-<?php
-/**
- * Contao 3 Extension [mhgElements]
- *
- * Copyright (c) 2016 Medienhaus Gersöne UG | Pierre Gersöne
- *
- * @package     mhgElements
- * @link        http://www.medienhaus-gersoene.de
- * @license     propitary licence
- */
-
-/**
- * frontend template
- */
-?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>">
 <head>
