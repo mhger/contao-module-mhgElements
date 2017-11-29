@@ -21,6 +21,7 @@ $GLOBALS['TL_HOOKS']['getPageLayout'][] = array('mhg\Elements', 'getPageLayout')
 $GLOBALS['TL_CTE']['Custom Elements']['exitIntentStart'] = 'mhg\ExitIntentStart';
 $GLOBALS['TL_CTE']['Custom Elements']['exitIntentStop'] = 'mhg\ExitIntentStop';
 
+
 /**
  * add Wrapper elements
  */
