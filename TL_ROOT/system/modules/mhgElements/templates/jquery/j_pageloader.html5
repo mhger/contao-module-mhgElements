@@ -1,5 +1,5 @@
 <?php
-$GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/pageloader.css';
+$GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/pageloader.css|static';
 ?>
 <div id="pageloader" class="mod_pageloader">
     <div class="status_indicator">
@@ -11,7 +11,7 @@ $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/pageloader.css';
 <script type="text/javascript">
 //<![CDATA[
     $(window).load(function() {
-        var t = 50;
+        var t = 500;
         setTimeout(function() {
             $('#pageloader .status_indicator').fadeOut(t);
             $('#pageloader').delay(t).fadeOut(t);
