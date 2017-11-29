@@ -1,9 +1,32 @@
-# [mhgElements]
-Propitary licence (c) Medienhaus Gersoene UG (haftungsbeschraenkt)
-Berliner Agentur fuer neue Medien: Web, Design & Grafik
+# Contao Extension [mhgElements]
+
+New Contao content elements and modules.
+
+- Exitintent
+
+Idea and realisation: <https://www.medienhaus-gersoene.de>
 
 
-# Funktionen
-*Version 2016-08*
-- Fügt Animationseinstellungen zu Elementen (Überschrift, Text und Text mit Bild) hinzu.
-- Zusätzlich enthält das Modul ein "Exitintent" Element, das ein Popup Fenster anzeigt wenn man die Seite verlässt. 
+## Features
+- animations for content elements and modules
+- improvments for existing / standard Contao content elements and modules
+
+
+### Manual
+EN: n/a
+
+DE: <https://www.contao-agentur.com/contao-erweiterungen>
+
+
+### Author
+Medienhaus Gersöne <https://github.com/mhger>
+
+Pierre Gersöne <https://github.com/pgersoene> 
+
+
+### Licence
+LGPL 3.0+
+
+
+### Release
+2017-11-29
