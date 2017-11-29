@@ -1,24 +1,29 @@
 <?php
-
 /**
- * mhgElements Contao 3 Extension
+ * Contao 3 Extension [mhgElements]
+ *
+ * Copyright (c) 2017 Medienhaus Gersöne UG (haftungsbeschränkt) | Pierre Gersöne
  *
  * @package     mhgElements
- * @link        http://www.medienhaus-gersoene.de
- * @license     propitary
- * @copyright   Copyright (c) 2014
  * @author      Pierre Gersöne <mail@medienhaus-gersoene.de>
+ * @link        https://www.medienhaus-gersoene.de Medienhaus Gersöne - Agentur für Neue Medien: Web, Design & Marketing
+ * @license     LGPL-3.0+
  */
+/**
+ * Register global hooks
+ */
+$GLOBALS['TL_HOOKS']['getPageLayout'][] = array('mhg\Elements', 'getPageLayout');
 
 
-// Register HOOKS
-$GLOBALS['TL_HOOKS']['getPageLayout'][] = array('mhg\ElementsHooks', 'getPageLayout');
-
-/** Register Content Module */
+/**
+ * Register content modules
+ */
 $GLOBALS['TL_CTE']['Custom Elements']['exitIntentStart'] = 'mhg\ExitIntentStart';
 $GLOBALS['TL_CTE']['Custom Elements']['exitIntentStop'] = 'mhg\ExitIntentStop';
 
-/** Add Wrapper elements */
+/**
+ * add Wrapper elements
+ */
 $GLOBALS['TL_WRAPPERS']['start'][] = 'exitIntentStart';
 $GLOBALS['TL_WRAPPERS']['stop'][] = 'exitIntentStop';
 

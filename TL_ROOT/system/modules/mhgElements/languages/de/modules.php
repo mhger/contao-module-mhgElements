@@ -1,12 +1,12 @@
 <?php
 /**
- * mhgElements Contao 3 Extension
+ * Contao 3 Extension [mhgElements]
+ *
+ * Copyright (c) 2017 Medienhaus Gersöne UG (haftungsbeschränkt) | Pierre Gersöne
  *
  * @package     mhgElements
- * @link        http://www.medienhaus-gersoene.de
- * @license     propitary
- * @copyright   Copyright (c) 2014
  * @author      Pierre Gersöne <mail@medienhaus-gersoene.de>
+ * @link        https://www.medienhaus-gersoene.de Medienhaus Gersöne - Agentur für Neue Medien: Web, Design & Marketing
+ * @license     LGPL-3.0+
  */
-// the module name
-$GLOBALS['TL_LANG']['MOD']['mhgElements'] = 'Medienhaus Gersöne - MHG Elements';
+$GLOBALS['TL_LANG']['MOD']['mhgElements'] = 'MHG Elements - (c) Medienhaus Gersöne';

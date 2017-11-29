@@ -23,7 +23,7 @@ var
 $(document)
 
         .ready(function () {
-            if ($('.exitintent').length > 0 ) {
+            if ($('.exitintent').length > 0) {
                 eiVars = $.parseJSON($('.exitintent').attr('data-json'));
                 recAreaLeft = 0;
                 recAreaRight = $(window).width();
@@ -43,9 +43,9 @@ $(document)
                 square_top = eiVars.exitintent_square_top;
             }
         })
-            
+
         .mousemove(function (e) {
-            if ($('.exitintent').length > 0 ) {
+            if ($('.exitintent').length > 0) {
                 //mouse position
                 xx = e.pageX;
                 yy = e.pageY;
@@ -64,7 +64,7 @@ $(document)
         })
 
         .scroll(function () {
-            if ($('.exitintent').length > 0 ) {
+            if ($('.exitintent').length > 0) {
                 if (displayCounter < displaySteps) {
                     if (touchSquare($(window).scrollTop())) {
                         callLightbox();

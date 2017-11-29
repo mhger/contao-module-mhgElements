@@ -1,53 +1,63 @@
 <?php
 /**
- *  Modify palettes 
+ * Contao 3 Extension [mhgElements]
+ *
+ * Copyright (c) 2017 Medienhaus Gersöne UG (haftungsbeschränkt) | Pierre Gersöne
+ *
+ * @package     mhgElements
+ * @author      Pierre Gersöne <mail@medienhaus-gersoene.de>
+ * @link        https://www.medienhaus-gersoene.de Medienhaus Gersöne - Agentur für Neue Medien: Web, Design & Marketing
+ * @license     LGPL-3.0+
  */
-mhg\Dca::modifyPalette(
-    array(
-    ',keywords',
-    ',author',
-    ',inColumn'
-    ), array(
-    '',
-    ',author,keywords',
-    ',inColumn,layoutType'
-    ), 'tl_article'
-);
+/**
+ * alter DCA pallettes
+ */
+mhg\Dca::modifyPalette(array(',guests', ',inColumn'), array(',hide,guests', ',inColumn,layoutType'), 'tl_article');
+
 
 /**
- * Add fields
+ * add DCA fields
  */
-mhg\Dca::addField( 'tl_article', 'layoutType',
-    array(
+mhg\Dca::addField('tl_article', 'hide', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_article']['hide'],
+    'exclude' => true,
+    'inputType' => 'checkbox',
+    'eval' => array('tl_class' => 'w50'),
+    'sql' => "char(1) NOT NULL default ''"
+));
+
+
+mhg\Dca::addField('tl_article', 'layoutType', array(
     'label' => &$GLOBALS['TL_LANG']['tl_article']['layoutType'],
     'exclude' => true,
     'default' => '',
     'inputType' => 'select',
-    'options_callback' => array( 'tl_article_mhgElements', 'getLayoutTypes' ),
+    'options_callback' => array('tl_article_mhgElements', 'getLayoutTypes'),
     'reference' => &$GLOBALS['TL_LANG']['tl_article'],
     'sql' => "varchar(32) NOT NULL default ''"
-    )
+        )
 );
 
+
 /**
- * mhgElements tl_article class
+ *  Extended tl_article class [mhgElements]
  */
-class tl_article_mhgElements extends tl_article
-    {
+class tl_article_mhgElements extends tl_article {
 
-
-    public function getLayoutTypes()
-        {
-        $types = array(
+    /**
+     * @param   void
+     * @return  array
+     */
+    public function getLayoutTypes() {
+        $arrTypes = array(
             '' => 'default',
             'fullsize' => 'fullsize',
         );
 
-        foreach( $types as $k => $v )
-            {
-            $types[$k] = &$GLOBALS['TL_LANG']['tl_article']['layoutTypeOptions'][$v];
-            }
-
-        return $types;
+        foreach ($arrTypes as $k => $v) {
+            $arrTypes[$k] = &$GLOBALS['TL_LANG']['tl_article']['layoutTypeOptions'][$v];
         }
+
+        return $arrTypes;
     }
+}
