@@ -94,11 +94,11 @@ class Elements {
         if ($strTemplate == 'fe_page') {
 
             // add addintional classes for sections to provided better css styling
-            $arrSections = array('header', 'main', 'left', 'right', 'footer', 'container');
+            $arrSections = array('header', 'main', 'left', 'right', 'footer', 'container','wrapper');
 
             foreach ($arrSections as $section) {
-                $search = ' id="' . $section . '"';
-                $replace = $search . ' class="section_' . $section . '"';
+                $search = ' id="' . $section . '">';
+                $replace = '  id="' . $section . '" class="section_' . $section . '">';
                 $strContent = str_replace($search, $replace, $strContent);
             }
         }
