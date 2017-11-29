@@ -294,18 +294,22 @@
     animation-delay: 1s;
 }
 .d6.animate_start {
+    -webkit-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+}
+.d7.animate_start {
     -webkit-animation-delay: 2.5s;
     animation-delay: 2.5s;
 }
-.d7.animate_start {
+.d8.animate_start {
     -webkit-animation-delay: 5s;
     animation-delay: 5s;
 }
-.d8.animate_start {
+.d9.animate_start {
     -webkit-animation-delay: 7.5s;
     animation-delay: 7.5s;
 }
-.d9.animate_start {
+.d10.animate_start {
     -webkit-animation-delay: 10s;
     animation-delay: 10s;
 }

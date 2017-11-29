@@ -12,11 +12,9 @@
 /**
  * alter DCA palettes and subpalettes
  */
-mhg\Dca::modifyPalettes(',headline', ',headline,headlineAnimationType,headlineAnimationDelay,headlineAnimationOnce', 'tl_content');
-mhg\Dca::modifyPalettes(',text', ',text,textAnimationType,textAnimationDelay,textAnimationOnce', 'tl_content');
-
-mhg\Dca::modifyPalettes(',fullsize', ',fullsize,imageAnimationType,imageAnimationDelay,imageAnimationOnce', 'tl_content');
-mhg\Dca::modifySubpalettes(',fullsize', ',fullsize,imageAnimationType,imageAnimationDelay,imageAnimationOnce', 'tl_content');
+mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('headline'));
+mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,textAnimationType,textAnimationDelay,imageAnimationType,imageAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('text'));
+mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,imageAnimationType,imageAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('image'));
 
 /**
  * add DCA palettes
@@ -145,6 +143,9 @@ mhg\Dca::addField('tl_content', 'exitintent_cookie_timer', array(
     'sql' => "char(1) NOT NULL default '1'"
 ));
 
+
+
+
 mhg\Dca::addField('tl_content', 'headlineAnimationType', array(
     'label' => &$GLOBALS['TL_LANG']['tl_content']['headlineAnimationType'],
     'exclude' => true,
@@ -167,8 +168,8 @@ mhg\Dca::addField('tl_content', 'headlineAnimationDelay', array(
     'sql' => "char(1) NOT NULL default ''"
 ));
 
-mhg\Dca::addField('tl_content', 'headlineAnimationOnce', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['headlineAnimationOnce'],
+mhg\Dca::addField('tl_content', 'elementAnimationRepeat', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_content']['elementAnimationRepeat'],
     'exclude' => true,
     'inputType' => 'checkbox',
     'eval' => array('tl_class' => 'w50 m12'),
@@ -197,14 +198,6 @@ mhg\Dca::addField('tl_content', 'textAnimationDelay', array(
     'sql' => "char(1) NOT NULL default ''"
 ));
 
-mhg\Dca::addField('tl_content', 'textAnimationOnce', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['textAnimationOnce'],
-    'exclude' => true,
-    'inputType' => 'checkbox',
-    'eval' => array('tl_class' => 'w50 m12'),
-    'sql' => "char(1) NOT NULL default ''"
-));
-
 mhg\Dca::addField('tl_content', 'imageAnimationType', array(
     'label' => &$GLOBALS['TL_LANG']['tl_content']['imageAnimationType'],
     'exclude' => true,
@@ -224,14 +217,6 @@ mhg\Dca::addField('tl_content', 'imageAnimationDelay', array(
     'options_callback' => array('tl_content_mhgElements', 'getAnimationsDelay'),
     'reference' => &$GLOBALS['TL_LANG']['tl_content'],
     'eval' => array('tl_class' => 'w50'),
-    'sql' => "char(1) NOT NULL default ''"
-));
-
-mhg\Dca::addField('tl_content', 'imageAnimationOnce', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['imageAnimationOnce'],
-    'exclude' => true,
-    'inputType' => 'checkbox',
-    'eval' => array('tl_class' => 'w50 m12'),
     'sql' => "char(1) NOT NULL default ''"
 ));
 
@@ -262,8 +247,8 @@ class tl_content_mhgElements extends tl_content {
             '' => '---'
         );
 
-        foreach ($GLOBALS['TL_MHG']['animationTypes'] as $type) {
-            $animations[$type] = &$GLOBALS['TL_LANG']['tl_content']['animationTypes'][$type];
+        foreach ($GLOBALS['TL_MHG']['animations']['types'] as $type) {
+            $animations[$type] = &$GLOBALS['TL_LANG']['tl_content']['animations']['types'][$type];
         }
 
         return $animations;
@@ -278,8 +263,8 @@ class tl_content_mhgElements extends tl_content {
             '' => '---'
         );
 
-        foreach ($GLOBALS['TL_MHG']['animationDelays'] as $type) {
-            $delays[$type] = &$GLOBALS['TL_LANG']['tl_content']['animationDelays'][$type];
+        foreach ($GLOBALS['TL_MHG']['animations']['delays'] as $type) {
+            $delays[$type] = &$GLOBALS['TL_LANG']['tl_content']['animations']['delays'][$type];
         }
 
         return $delays;

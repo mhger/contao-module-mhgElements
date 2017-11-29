@@ -38,10 +38,6 @@ class Elements {
             $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/animate.css||static';
             $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mhgElements/assets/js/jquery.waypoint.js|static';
             $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mhgElements/assets/js/jquery.animate.js|static';
-
-
-            $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/exitintent.css||static';
-            $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mhgElements/assets/js/jquery.exitintent.js|static';
         }
     }
 
@@ -94,11 +90,20 @@ class Elements {
         if ($strTemplate == 'fe_page') {
 
             // add addintional classes for sections to provided better css styling
-            $arrSections = array('header', 'main', 'left', 'right', 'footer', 'container','wrapper');
+            $arrSections = array('header', 'main', 'left', 'right', 'footer', 'container', 'wrapper');
 
             foreach ($arrSections as $section) {
+                $strClass = 'section_' . $section;
+
+                if ($section == 'left') {
+                    $strClass.= 'section_sidebar section_sidebar_primary';
+                } elseif ($section == 'right') {
+                    $strClass.= 'section_sidebar section_sidebar_secondary';
+                }
+
                 $search = ' id="' . $section . '">';
-                $replace = '  id="' . $section . '" class="section_' . $section . '">';
+                $replace = '  id="' . $section . '" class="' . $strClass . '">';
+
                 $strContent = str_replace($search, $replace, $strContent);
             }
         }
@@ -120,7 +125,6 @@ class Elements {
         if (in_array($strType, array('ce_text', 'ce_image'))) {
             $strHeadlineAnimationClass = $this->getAnimationClass($objElement, 'headline');
             $arrHeadline = unserialize($objElement->headline);
-
 
             if ($strHeadlineAnimationClass && !empty($arrHeadline['value'])) {
                 $search = '<' . $arrHeadline['unit'] . '>' . $arrHeadline['value'];
@@ -152,7 +156,6 @@ class Elements {
         $strClass = '';
         $strType = $type . 'AnimationType';
         $strTypeDelay = $type . 'AnimationDelay';
-        $strTypeOnce = $type . 'AnimationOnce';
 
         if (!$objElement->$strType || !in_array($type, array('headline', 'text', 'image'))) {
             return '';
@@ -160,7 +163,7 @@ class Elements {
 
         // generate css animation class
         if ($objElement->$strType === 'random') {
-            $types = $GLOBALS['TL_MHG']['animationTypes'];
+            $types = $GLOBALS['TL_MHG']['animations']['types'];
             unset($types['random']);
             $strClass.= ' animate_' . $types[array_rand($types)];
         } else {
@@ -171,9 +174,7 @@ class Elements {
             $strClass.= ' d' . $objElement->$strTypeDelay;
         }
 
-        if ($objElement->$strTypeOnce) {
-            $strClass.= ' animateOnce';
-        }
+        $strClass.= $objElement->elementAnimationRepeat ? '' : ' animateOnce';
 
         return $strClass;
     }

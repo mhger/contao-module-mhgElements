@@ -18,10 +18,10 @@ $GLOBALS['TL_HOOKS']['getPageLayout'][] = array('mhg\Elements', 'getPageLayout')
 /**
  * Register frontend hooks
  */
-if (TL_MODE == 'FE') {    
-    $GLOBALS['TL_HOOKS']['getContentElement'][] = array('mhg\Elements', 'getContentElement');  
+if (TL_MODE == 'FE') {
+    $GLOBALS['TL_HOOKS']['getContentElement'][] = array('mhg\Elements', 'getContentElement');
     $GLOBALS['TL_HOOKS']['parseTemplate'][] = array('mhg\Elements', 'parseTemplate');
-    $GLOBALS['TL_HOOKS']['parseFrontendTemplate'][] = array('mhg\Elements', 'parseFrontendTemplate');    
+    $GLOBALS['TL_HOOKS']['parseFrontendTemplate'][] = array('mhg\Elements', 'parseFrontendTemplate');
 }
 
 
@@ -56,33 +56,23 @@ $GLOBALS['TL_MHG']['exitintentCookieTimers'] = array(
 
 
 // module specific config
-$GLOBALS['TL_MHG']['animationTypes'] = array(
-    'random',
-    'bounce',
-    'shake',
-    'atf',
-    'afc',
-    'fade',
-    'aft',
-    'afr',
-    'afl',
-    'afb',
-    'wfc',
-    'hfc',
-    'rfc',
-    'rfl',
-    'rfr'
-);
-
-$GLOBALS['TL_MHG']['animationDelays'] = array(
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10'
+$GLOBALS['TL_MHG']['animations'] = array(
+    'types' => array(
+        'random',
+        'bounce',
+        'shake',
+        'atf',
+        'afc',
+        'fade',
+        'aft',
+        'afr',
+        'afl',
+        'afb',
+        'wfc',
+        'hfc',
+        'rfc',
+        'rfl',
+        'rfr'
+    ),
+    'delays' => range(1, 10),
 );
