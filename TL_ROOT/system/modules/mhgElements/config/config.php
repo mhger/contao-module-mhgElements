@@ -19,9 +19,9 @@ $GLOBALS['TL_HOOKS']['getPageLayout'][] = array('mhg\Elements', 'getPageLayout')
  * Register frontend hooks
  */
 if (TL_MODE == 'FE') {
-    $GLOBALS['TL_HOOKS']['getContentElement'][] = array('mhg\Elements', 'getContentElement');
     $GLOBALS['TL_HOOKS']['parseTemplate'][] = array('mhg\Elements', 'parseTemplate');
     $GLOBALS['TL_HOOKS']['parseFrontendTemplate'][] = array('mhg\Elements', 'parseFrontendTemplate');
+    $GLOBALS['TL_HOOKS']['getContentElement'][] = array('mhg\Elements', 'getContentElement');
 }
 
 
@@ -55,7 +55,9 @@ $GLOBALS['TL_MHG']['exitintentCookieTimers'] = array(
 );
 
 
-// module specific config
+/**
+ * Configuration for animations
+ */
 $GLOBALS['TL_MHG']['animations'] = array(
     'types' => array(
         'random',

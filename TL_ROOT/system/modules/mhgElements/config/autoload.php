@@ -18,9 +18,6 @@ ClassLoader::addClasses(array(
     // Content elements
     'mhg\ExitIntentStart' => 'system/modules/mhgElements/elements/ExitIntentStart.php',
     'mhg\ExitIntentStop' => 'system/modules/mhgElements/elements/ExitIntentStop.php',
-    // Modules
-    'mhg\ModuleSearch' => 'system/modules/mhgCore/modules/ModuleSearch.php',
-    'mhg\ModuleArticleList' => 'system/modules/mhgCore/modules/ModuleArticleList.php',
 ));
 
 
@@ -31,9 +28,6 @@ TemplateLoader::addFiles(array(
     // elements
     'ce_exitintent_start' => 'system/modules/mhgElements/templates/elements',
     'ce_exitintent_stop' => 'system/modules/mhgElements/templates/elements',
-    // modules
-    'mod_article' => 'system/modules/mhgElements/templates/modules',
-    'mod_article_list' => 'system/modules/mhgElements/templates/modules',
     // jQuery
     'j_pageloader' => 'system/modules/mhgElements/templates/jquery',
 ));

@@ -56,3 +56,8 @@
     display: block;
     outline: none;
 }
+
+
+.ce_exitIntentStart {
+    display: none;
+}

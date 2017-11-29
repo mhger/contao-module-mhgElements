@@ -25,6 +25,10 @@ class ExitIntentStart extends \Contao\ContentElement {
      * Generate the content element
      */
     protected function compile() {
+        $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/exitintent.css?v='.time();#||static';
+        $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mhgElements/assets/js/jquery.exitintent.js';#|static';
+
+
         if (TL_MODE == 'BE') {
             $this->strTemplate = 'be_wildcard';
             /** @var \BackendTemplate|object $objTemplate */

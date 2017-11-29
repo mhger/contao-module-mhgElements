@@ -87,8 +87,33 @@ class Elements {
      * @return  string
      */
     public function parseFrontendTemplate($strContent, $strTemplate) {
-        if ($strTemplate == 'fe_page') {
+        global $objPage;
 
+        if ($strTemplate == 'mod_search') {
+            // Add keyword(s) to page title from search,
+            // sanitize and remove possible harmful tags
+            $strKeywords = trim(\Input::get('keywords'));
+            $strKeywords = preg_replace('/\{\{[^\}]*\}\}/', '', $strKeywords);
+            $strKeywords = strip_tags(strip_insert_tags($strKeywords));
+            $strKeywords = filter_var($strKeywords, FILTER_SANITIZE_STRING);
+
+            if (!empty($strKeywords)) {
+                $intPage = 0;
+                foreach ($_GET as $key => $value) {
+                    if (0 === strpos($key, 'page_s')) {
+                        $intPage = intval($value);
+                        break;
+                    }
+                }
+                $strTitle = ucwords($strKeywords);
+                $strTitle.= $intPage > 1 ? ' - ' . $GLOBALS['TL_LANG']['MSC']['page'] . ' ' . $intPage . ' | ' : ' | ';
+                $strTitle.= empty($objPage->pageTitle) ? $objPage->title : $objPage->pageTitle;
+
+                $objPage->pageTitle = $strTitle;
+            }
+        }
+
+        if ($strTemplate == 'fe_page') {
             // add addintional classes for sections to provided better css styling
             $arrSections = array('header', 'main', 'left', 'right', 'footer', 'container', 'wrapper');
 
