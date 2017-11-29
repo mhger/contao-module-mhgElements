@@ -1,7 +1,7 @@
 /*!
  * [mhgElements]
  * Copyright © 2017 Medienhaus Gersöne UG (haftungsbeschränkt)
- * http://www,medienhaus-gersoene.de
+ * https://www.medienhaus-gersoene.de
  */
 
 $(window).load(function () {

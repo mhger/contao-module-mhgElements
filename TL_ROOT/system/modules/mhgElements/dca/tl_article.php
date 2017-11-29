@@ -12,7 +12,7 @@
 /**
  * alter DCA pallettes
  */
-mhg\Dca::modifyPalette(array(',guests', ',inColumn'), array(',hide,guests', ',inColumn,layoutType'), 'tl_article');
+mhg\Dca::modifyPalette(',guests', ',hide,guests', 'tl_article');
 
 
 /**
@@ -25,39 +25,3 @@ mhg\Dca::addField('tl_article', 'hide', array(
     'eval' => array('tl_class' => 'w50'),
     'sql' => "char(1) NOT NULL default ''"
 ));
-
-
-mhg\Dca::addField('tl_article', 'layoutType', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_article']['layoutType'],
-    'exclude' => true,
-    'default' => '',
-    'inputType' => 'select',
-    'options_callback' => array('tl_article_mhgElements', 'getLayoutTypes'),
-    'reference' => &$GLOBALS['TL_LANG']['tl_article'],
-    'sql' => "varchar(32) NOT NULL default ''"
-        )
-);
-
-
-/**
- *  Extended tl_article class [mhgElements]
- */
-class tl_article_mhgElements extends tl_article {
-
-    /**
-     * @param   void
-     * @return  array
-     */
-    public function getLayoutTypes() {
-        $arrTypes = array(
-            '' => 'default',
-            'fullsize' => 'fullsize',
-        );
-
-        foreach ($arrTypes as $k => $v) {
-            $arrTypes[$k] = &$GLOBALS['TL_LANG']['tl_article']['layoutTypeOptions'][$v];
-        }
-
-        return $arrTypes;
-    }
-}

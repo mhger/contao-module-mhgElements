@@ -253,6 +253,10 @@ class tl_content_mhgElements extends tl_content {
         return $cookieTimers;
     }
 
+    /**
+     * @param   void
+     * @return  array
+     */
     public function getAnimations() {
         $animations = array(
             '' => '---'
@@ -265,6 +269,10 @@ class tl_content_mhgElements extends tl_content {
         return $animations;
     }
 
+    /**
+     * @param   void
+     * @return  array
+     */
     public function getAnimationsDelay() {
         $delays = array(
             '' => '---'
@@ -277,15 +285,22 @@ class tl_content_mhgElements extends tl_content {
         return $delays;
     }
 
+    /**
+     * @param   void
+     * @return  array
+     */
     public function getAnimationsText() {
         $animations = $this->getAnimations();
 
         return $animations;
     }
 
+    /**
+     * @param   void
+     * @return  array
+     */
     public function getAnimationsImages() {
         $animations = $this->getAnimations();
-        $animations['parallax'] = 'parallax';
 
         return $animations;
     }

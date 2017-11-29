@@ -16,13 +16,11 @@ ClassLoader::addClasses(array(
     // Classes
     'mhg\Elements' => 'system/modules/mhgElements/classes/Elements.php',
     // Content elements
-    'mhg\ContentHeadline' => 'system/modules/mhgElements/elements/ContentHeadline.php',
-    'mhg\ContentText' => 'system/modules/mhgElements/elements/ContentText.php',
-    'mhg\ContentImage' => 'system/modules/mhgElements/elements/ContentImage.php',
     'mhg\ExitIntentStart' => 'system/modules/mhgElements/elements/ExitIntentStart.php',
     'mhg\ExitIntentStop' => 'system/modules/mhgElements/elements/ExitIntentStop.php',
     // Modules
-    'mhg\ModuleArticle' => 'system/modules/mhgElements/modules/ModuleArticle.php',
+    'mhg\ModuleSearch' => 'system/modules/mhgCore/modules/ModuleSearch.php',
+    'mhg\ModuleArticleList' => 'system/modules/mhgCore/modules/ModuleArticleList.php',
 ));
 
 
@@ -33,9 +31,6 @@ TemplateLoader::addFiles(array(
     // frontend
     'fe_page' => 'system/modules/mhgElements/templates/frontend',
     // elements
-    'ce_headline' => 'system/modules/mhgElements/templates/elements',
-    'ce_text' => 'system/modules/mhgElements/templates/elements',
-    'ce_image' => 'system/modules/mhgElements/templates/elements',
     'ce_exitintent_start' => 'system/modules/mhgElements/templates/elements',
     'ce_exitintent_stop' => 'system/modules/mhgElements/templates/elements',
     // modules

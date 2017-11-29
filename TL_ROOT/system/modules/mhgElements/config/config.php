@@ -16,6 +16,15 @@ $GLOBALS['TL_HOOKS']['getPageLayout'][] = array('mhg\Elements', 'getPageLayout')
 
 
 /**
+ * Register frontend hooks
+ */
+if (TL_MODE == 'FE') {
+    $GLOBALS['TL_HOOKS']['parseTemplate'][] = array('mhg\Elements', 'parseTemplate');
+    $GLOBALS['TL_HOOKS']['getContentElement'][] = array('mhg\Elements', 'getContentElement');    
+}
+
+
+/**
  * Register content modules
  */
 $GLOBALS['TL_CTE']['Custom Elements']['exitIntentStart'] = 'mhg\ExitIntentStart';
