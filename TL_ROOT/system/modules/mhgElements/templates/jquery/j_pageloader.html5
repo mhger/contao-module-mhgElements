@@ -1,6 +1,3 @@
-<?php
-$GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/pageloader.css|static';
-?>
 <div id="pageloader" class="mod_pageloader">
     <div class="status_indicator">
         <div class="cube_puls"></div>
@@ -11,7 +8,7 @@ $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/pageloader.css|sta
 <script type="text/javascript">
 //<![CDATA[
     $(window).load(function() {
-        var t = 500;
+        var t = 50;
         setTimeout(function() {
             $('#pageloader .status_indicator').fadeOut(t);
             $('#pageloader').delay(t).fadeOut(t);

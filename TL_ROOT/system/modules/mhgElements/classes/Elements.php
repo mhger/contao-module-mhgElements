@@ -30,12 +30,11 @@ class Elements {
         if ($objLayout->addJQuery) {
             $arrJquery = deserialize($objLayout->jquery, true);
 
-            if (!in_array('jquery_base', $arrJquery)) {
-                array_unshift($arrJquery, 'jquery_base');
-                $objLayout->jquery = serialize($arrJquery);
+            if (in_array('j_pageloader', $arrJquery)) {
+                $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/pageloader.css||static';
             }
 
-            // add both files static to be compressed
+            // add JS & CSS files static to be compressed
             $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/animate.css||static';
             $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mhgElements/assets/js/jquery.waypoint.js|static';
             $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mhgElements/assets/js/jquery.animate.js|static';
