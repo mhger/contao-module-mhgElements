@@ -28,8 +28,6 @@ ClassLoader::addClasses(array(
  * Register templates
  */
 TemplateLoader::addFiles(array(
-    // frontend
-    'fe_page' => 'system/modules/mhgElements/templates/frontend',
     // elements
     'ce_exitintent_start' => 'system/modules/mhgElements/templates/elements',
     'ce_exitintent_stop' => 'system/modules/mhgElements/templates/elements',
@@ -37,6 +35,5 @@ TemplateLoader::addFiles(array(
     'mod_article' => 'system/modules/mhgElements/templates/modules',
     'mod_article_list' => 'system/modules/mhgElements/templates/modules',
     // jQuery
-    'jquery_base' => 'system/modules/mhgElements/templates/jquery',
     'j_pageloader' => 'system/modules/mhgElements/templates/jquery',
 ));

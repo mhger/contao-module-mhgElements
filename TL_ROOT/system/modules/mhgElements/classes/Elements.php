@@ -52,15 +52,19 @@ class Elements {
      * @return  void
      */
     public function parseTemplate($objTemplate) {
-        $strHeadlineAnimationClass = $this->getAnimationClass($objTemplate, 'headline');
-        $strImageAnimationClass = $this->getAnimationClass($objTemplate, 'image');
-        $strTextAnimationClass = $this->getAnimationClass($objTemplate, 'text');
+        $strTemplate = $objTemplate->getName();
 
+        // continue only for supported elements / templates
+        if (!in_array($strTemplate, array('ce_headline', 'ce_text', 'ce_image'))) {
+            return;
+        }
 
         /**
          * Add animation classes - differs by content type
          */
-        $strTemplate = $objTemplate->getName();
+        $strHeadlineAnimationClass = $this->getAnimationClass($objTemplate, 'headline');
+        $strImageAnimationClass = $this->getAnimationClass($objTemplate, 'image');
+        $strTextAnimationClass = $this->getAnimationClass($objTemplate, 'text');
 
         // headlines
         if (0 === strpos($strTemplate, 'ce_headline')) {
@@ -69,8 +73,6 @@ class Elements {
             // wrap text and add animation class
             $objTemplate->text = '<div class="text_container' . $strTextAnimationClass . '">' . $objTemplate->text . '</div>';
             // add image animation class
-            $objTemplate->floatClass.= $strImageAnimationClass;
-        } elseif (0 === strpos($strTemplate, 'ce_image')) {
             $objTemplate->floatClass.= $strImageAnimationClass;
         }
 
@@ -83,6 +85,28 @@ class Elements {
     }
 
     /**
+     * 
+     * @param   string $strContent
+     * @param   string $strTemplate
+     * @return  string
+     */
+    public function parseFrontendTemplate($strContent, $strTemplate) {
+        if ($strTemplate == 'fe_page') {
+
+            // add addintional classes for sections to provided better css styling
+            $arrSections = array('header', 'main', 'left', 'right', 'footer', 'container');
+
+            foreach ($arrSections as $section) {
+                $search = ' id="' . $section . '"';
+                $replace = $search . ' class="section_' . $section . '"';
+                $strContent = str_replace($search, $replace, $strContent);
+            }
+        }
+
+        return $strContent;
+    }
+
+    /**
      * Hook.
      * 
      * @param   object $objTemplate
@@ -92,7 +116,7 @@ class Elements {
     public function getContentElement($objElement, $strBuffer) {
         $strType = $objElement->typePrefix . $objElement->type;
 
-        // headline animations
+        // add headline animations
         if (in_array($strType, array('ce_text', 'ce_image'))) {
             $strHeadlineAnimationClass = $this->getAnimationClass($objElement, 'headline');
             $arrHeadline = unserialize($objElement->headline);
@@ -105,7 +129,7 @@ class Elements {
             }
         }
 
-        // image animations
+        // add image animations
         if (in_array($strType, array('ce_image'))) {
             $strImageAnimationClass = $this->getAnimationClass($objElement, 'image');
 
@@ -119,6 +143,11 @@ class Elements {
         return $strBuffer;
     }
 
+    /**
+     * @param   object $objElement
+     * @param   string $type
+     * @return  string
+     */
     protected function getAnimationClass($objElement, $type) {
         $strClass = '';
         $strType = $type . 'AnimationType';
@@ -145,7 +174,6 @@ class Elements {
         if ($objElement->$strTypeOnce) {
             $strClass.= ' animateOnce';
         }
-
 
         return $strClass;
     }
