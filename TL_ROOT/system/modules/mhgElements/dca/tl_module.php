@@ -12,7 +12,7 @@
 /**
  * add DCA palette
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['exitintent'] = '{type_legend},name,headline,type;'
+$GLOBALS['TL_DCA']['tl_module']['palettes']['exitintent'] = '{title_legend},name,headline,type;'
         . '{config_legend},articleID,exitintent_steps,exitintent_delay,exitintent_distance,exitintent_scroll,exitintent_timer,exitintent_cookie;'
         . '{protected_legend:hide},guests,protected;{expert_legend:hide},cssID;';
 

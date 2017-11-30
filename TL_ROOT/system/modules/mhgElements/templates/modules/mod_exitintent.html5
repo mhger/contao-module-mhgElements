@@ -2,6 +2,10 @@
 
 <div class="<?=$this->class?> invisible" data-show="<?=$this->showLightbox?>" data-json="<?=$this->vars?>">
     <div class="inside_wrapper">
+        <?php if($this->headline):?>
+            <<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
+        <?php endif; ?>
+
         {{insert_article::<?= $this->articleID ?>}}
     </div>
 </div>
