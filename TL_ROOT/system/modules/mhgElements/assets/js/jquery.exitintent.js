@@ -1,135 +1,127 @@
-//TRIGGER Exit Intent Lightbox
-var
-        eivars,
-        recAreaLeft,
-        recAreaRight,
-        recAreaTop,
-        recAreaBottom,
-        displaySteps,
-        recDelay,
-        top_active,
-        top_size,
-        bottom_active,
-        bottom_size,
-        left_active,
-        left_size,
-        right_active,
-        right_size,
-        square_active,
-        square_top,
-        displayCounter = 0;
+/**
+ * Exit Intent Layer / Lightbox
+ */
+$(document).ready(function () {
+    var doc = $(document),
+            obj = $('.mod_exitintent'),
+            eVars = 0,
+            recAreaLeft = 0,
+            recAreaRight = 0,
+            recAreaTop = 0,
+            recAreaBottom = 0,
+            displaySteps = 0,
+            recDelay = 0,
+            recDistance = 0,
+            scrollDistance = 0,
+            displayCounter = 0,
+            autoTimer = 0;
 
 
-$(document)
+    if (obj.length) {
+        eVars = $.parseJSON(obj.attr('data-json'));
+        recAreaLeft = 0;
+        recAreaRight = $(window).width();
+        recAreaTop = 0;
+        recAreaBottom = $(window).height();
+        displaySteps = eVars.steps;
+        recDelay = eVars.delay;
+        recDistance = eVars.distance;
+        scrollDistance = eVars.scroll;
+        autoTimer = eVars.timer;
 
-        .ready(function () {
-            if ($('.exitintent').length > 0) {
-                eiVars = $.parseJSON($('.exitintent').attr('data-json'));
-                recAreaLeft = 0;
-                recAreaRight = $(window).width();
-                recAreaTop = 0;
-                recAreaBottom = $(window).height();
-                displaySteps = eiVars.exitintent_steps;
-                recDelay = eiVars.exitintent_delay;
-                top_active = eiVars.exitintent_top;
-                top_size = eiVars.exitintent_top_size;
-                bottom_active = eiVars.exitintent_bottom;
-                bottom_size = eiVars.exitintent_bottom_size;
-                left_active = eiVars.exitintent_left;
-                left_size = eiVars.exitintent_left_size;
-                right_active = eiVars.exitintent_right;
-                right_size = eiVars.exitintent_right_size;
-                square_active = eiVars.exitintent_square;
-                square_top = eiVars.exitintent_square_top;
-            }
-        })
+        if (autoTimer) {
+            setTimeout(function () {
+                callLightbox();
+                $('body').addClass('exitintent_open');
+            }, autoTimer * 1000);
+        }
 
-        .mousemove(function (e) {
-            if ($('.exitintent').length > 0) {
-                //mouse position
-                xx = e.pageX;
-                yy = e.pageY;
-                //recognizeable area and timers
+        doc.mousemove(function (e) {
+            //mouse position
+            xx = e.pageX;
+            yy = e.pageY;
 
-                if (displayCounter < displaySteps) {
-                    if (isTouched()) {
-                        delayTimeout = setTimeout(function () {
-                            isTouched() ? callLightbox() : null;
-                            $('body').addClass('exitintent_open');
-                            clearTimeout(delayTimeout);
-                        }, recDelay);
-                    }
-                }
-            }
-        })
-
-        .scroll(function () {
-            if ($('.exitintent').length > 0) {
-                if (displayCounter < displaySteps) {
-                    if (touchSquare($(window).scrollTop())) {
-                        callLightbox();
+            if (displayCounter < displaySteps) {
+                if (isTouched()) {
+                    delayTimeout = setTimeout(function () {
+                        isTouched() ? callLightbox() : null;
                         $('body').addClass('exitintent_open');
-                    }
+                        clearTimeout(delayTimeout);
+                    }, recDelay);
                 }
             }
         });
 
-
-
-function callLightbox() {
-    if ($('.exitintent').attr('data-show') == 1) {
-        $.colorbox({
-            maxWidth: '95%',
-            maxHeight: '95%',
-            html: $('.exitintent').html(),
-            onClosed: function () {
-                $('body').removeClass('exitintent_open');
-                displayCounter++;
+        doc.scroll(function () {
+            if (displayCounter < displaySteps) {
+                if (touchSquare($(window).scrollTop())) {
+                    callLightbox();
+                    $('body').addClass('exitintent_open');
+                }
             }
         });
-        return true;
-    }
-}
 
-function isTouched() {
-    if (touchLeft() || touchRight() || touchTop() || touchBottom()) {
-        return true;
-    } else {
-        return false;
+        touchSquare = function (top) {
+            if (scrollDistance && top > scrollDistance) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        isTouched = function () {
+            if (touchLeft() || touchRight() || touchTop() || touchBottom()) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        touchTop = function () {
+            if (recDistance && xx > recAreaLeft && xx < recAreaRight && yy > recAreaTop && yy < recAreaTop + recDistance) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        touchBottom = function () {
+            if (recDistance && xx > recAreaLeft && xx < recAreaRight && yy > recAreaBottom - recDistance && yy < recAreaBottom) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        touchLeft = function () {
+            if (recDistance && xx > recAreaLeft && xx < recAreaLeft + recDistance && yy > recAreaTop && yy < recAreaBottom) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        touchRight = function () {
+            if (recDistance && xx > recAreaRight - recDistance && xx < recAreaRight && yy > recAreaTop && yy < recAreaBottom) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        callLightbox = function () {
+            if (obj.attr('data-show') == 1) {
+                $.colorbox({
+                    maxWidth: '95%',
+                    maxHeight: '95%',
+                    html: obj.html(),
+                    onClosed: function () {
+                        $('body').removeClass('exitintent_open');
+                        displayCounter++;
+                    }
+                });
+                return true;
+            }
+        };
     }
-}
-function touchTop() {
-    if (top_active && xx > recAreaLeft && xx < recAreaRight && yy > recAreaTop && yy < recAreaTop + top_size) {
-        return true;
-    } else {
-        return false;
-    }
-}
-function touchBottom() {
-    if (bottom_active && xx > recAreaLeft && xx < recAreaRight && yy > recAreaBottom - bottom_size && yy < recAreaBottom) {
-        return true;
-    } else {
-        return false;
-    }
-}
-function touchLeft() {
-    if (left_active && xx > recAreaLeft && xx < recAreaLeft + left_size && yy > recAreaTop && yy < recAreaBottom) {
-        return true;
-    } else {
-        return false;
-    }
-}
-function touchRight() {
-    if (right_active && xx > recAreaRight - right_size && xx < recAreaRight && yy > recAreaTop && yy < recAreaBottom) {
-        return true;
-    } else {
-        return false;
-    }
-}
-function touchSquare(top) {
-    if (square_active && top > square_top) {
-        return true;
-    } else {
-        return false;
-    }
-}
+});
+
+
+
+

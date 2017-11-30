@@ -1,8 +1,8 @@
-/*
-    exitIntentLightbox
-    shows messages on mouseout event (this is the css)
-    Created on : 04.07.2016, 13:03:15
-*/
+/**
+ * exitIntentLightbox
+ * shows messages on mouseout event (this is the css)
+ * Created on : 04.07.2016, 13:03:15
+**/
 
 .lightbox {
     /** Hide the lightbox */
@@ -47,7 +47,7 @@
     float:right;
     display:block;
     text-decoration:none;
-    font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size:22px;
     color:#858585;
 }
@@ -55,9 +55,4 @@
     /** Show lightbox when mouse leaves the browser window */
     display: block;
     outline: none;
-}
-
-
-.ce_exitIntentStart {
-    display: none;
 }

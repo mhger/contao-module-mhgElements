@@ -36,7 +36,6 @@ class Elements {
 
             // add JS & CSS files static to be compressed
             $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/animate.css||static';
-            $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mhgElements/assets/js/jquery.waypoint.js|static';
             $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mhgElements/assets/js/jquery.animate.js|static';
         }
     }

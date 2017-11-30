@@ -19,7 +19,6 @@ $GLOBALS['TL_LANG']['tl_content']['textAnimationDelay'] = array('Verzögerung de
 $GLOBALS['TL_LANG']['tl_content']['imageAnimationType'] = array('Art der Bildanimation', 'Wählen Sie hier die Art der Bildanimation aus.');
 $GLOBALS['TL_LANG']['tl_content']['imageAnimationDelay'] = array('Verzögerung der Bildanimation', 'Wählen Sie die Verzögerung der Bildanimation aus.');
 
-
 $GLOBALS['TL_LANG']['tl_content']['animations'] = array(
     'types' => array(
         'random' => 'Zufällige Animation',
@@ -51,46 +50,3 @@ $GLOBALS['TL_LANG']['tl_content']['animations'] = array(
         '10' => '10 Sekunden'
     )
 );
-
-
-
-$GLOBALS['TL_LANG']['tl_content']['exitintent_legend'] = 'Exit Intention Optionen';
-$GLOBALS['TL_LANG']['tl_content']['exitintent_steps'] = array('Wiederholungen', 'Wie oft soll die Lightbox aufgerufen werden?');
-$GLOBALS['TL_LANG']['tl_content']['exitintent_delay'] = array('Verzögerung der Randerkennung', 'Verzögerung der Erkennung der Mausposition am Rand in ms');
-
-$GLOBALS['TL_LANG']['tl_content']['exitintent_pos_legend'] = 'Reaktionsbereiche festlegen';
-$GLOBALS['TL_LANG']['tl_content']['exitintent_top'] = array('Reaktionsbereich oben', 'Einen Bereich am oberen Bildschirmrand festlegen');
-$GLOBALS['TL_LANG']['tl_content']['exitintent_top_size'] = array('Höhe des Reaktionsbereiches', 'in Pixel (px)');
-
-$GLOBALS['TL_LANG']['tl_content']['exitintent_bottom'] = array('Reaktionsbereich unten', 'Einen Bereich am unteren Bildschirmrand festlegen');
-$GLOBALS['TL_LANG']['tl_content']['exitintent_bottom_size'] = array('Höhe des Reaktionsbereiches', 'in Pixel (px)');
-
-$GLOBALS['TL_LANG']['tl_content']['exitintent_left'] = array('Reaktionsbereich links', 'Einen Bereich am linken Bildschirmrand festlegen');
-$GLOBALS['TL_LANG']['tl_content']['exitintent_left_size'] = array('Breite des Reaktionsbereiches', 'in Pixel (px)');
-
-$GLOBALS['TL_LANG']['tl_content']['exitintent_right'] = array('Reaktionsbereich rechts', 'Einen Bereich am rechten Bildschirmrand festlegen');
-$GLOBALS['TL_LANG']['tl_content']['exitintent_right_size'] = array('Breite des Reaktionsbereiches', 'in Pixel (px)');
-
-$GLOBALS['TL_LANG']['tl_content']['exitintent_square'] = array('Balken (OnePager)', 'Beim Scrollen zu einer bestimmten Position');
-$GLOBALS['TL_LANG']['tl_content']['exitintent_square_top'] = array('Abstand von oben', 'in Pixel (px)');
-
-$GLOBALS['TL_LANG']['tl_content']['exitintent_cookie_legend'] = 'Cookiebehandlung';
-$GLOBALS['TL_LANG']['tl_content']['exitintent_cookie_activate'] = array('Cookiebehandlung aktivieren', 'Anzeige der Lightbox per Cookie unterdrücken');
-$GLOBALS['TL_LANG']['tl_content']['exitintent_cookie_timer'] = array('Cookie Timer setzen', 'Wie lange soll das Lightbox-Popup nicht angezeigt werden?');
-
-
-$GLOBALS['TL_LANG']['tl_content']['exitintentCookieTimers'] = array(
-    '1' => '1 Tag',
-    '2' => '2 Tage',
-    '3' => '3 Tage',
-    '4' => '4 Tage',
-    '5' => '5 Tage',
-    '6' => '6 Tage',
-    '7' => '7 Tage',
-    '10' => '10 Tage',
-    '14' => '14 Tage',
-    '20' => '20 Tage',
-    '30' => '30 Tage',
-    '60' => '60 Tage',
-);
-

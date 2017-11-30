@@ -1,4 +1,0 @@
-<script src="<?= TL_ASSETS_URL ?>assets/jquery/colorbox/<?= $GLOBALS['TL_ASSETS']['COLORBOX'] ?>/js/colorbox.min.js"></script>
-
-<div class="exitintent <?=$this->class?>" data-show='<?=$this->showLightbox?>' data-json='<?=$this->exitintent_vars?>'>
-    <div class="exitintent-wrapper box">

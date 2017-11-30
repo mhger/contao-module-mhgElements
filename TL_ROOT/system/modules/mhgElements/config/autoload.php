@@ -15,9 +15,8 @@
 ClassLoader::addClasses(array(
     // Classes
     'mhg\Elements' => 'system/modules/mhgElements/classes/Elements.php',
-    // Content elements
-    'mhg\ExitIntentStart' => 'system/modules/mhgElements/elements/ExitIntentStart.php',
-    'mhg\ExitIntentStop' => 'system/modules/mhgElements/elements/ExitIntentStop.php',
+    // Modules
+    'mhg\ModuleExitIntent' => 'system/modules/mhgElements/modules/ModuleExitIntent.php',
 ));
 
 
@@ -25,9 +24,8 @@ ClassLoader::addClasses(array(
  * Register templates
  */
 TemplateLoader::addFiles(array(
-    // elements
-    'ce_exitintent_start' => 'system/modules/mhgElements/templates/elements',
-    'ce_exitintent_stop' => 'system/modules/mhgElements/templates/elements',
+    // Modules
+    'mod_exitintent' => 'system/modules/mhgElements/templates/modules',
     // jQuery
     'j_pageloader' => 'system/modules/mhgElements/templates/jquery',
 ));

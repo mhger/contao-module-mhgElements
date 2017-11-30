@@ -28,31 +28,7 @@ if (TL_MODE == 'FE') {
 /**
  * Register content modules
  */
-$GLOBALS['TL_CTE']['Custom Elements']['exitIntentStart'] = 'mhg\ExitIntentStart';
-$GLOBALS['TL_CTE']['Custom Elements']['exitIntentStop'] = 'mhg\ExitIntentStop';
-
-
-/**
- * add Wrapper elements
- */
-$GLOBALS['TL_WRAPPERS']['start'][] = 'exitIntentStart';
-$GLOBALS['TL_WRAPPERS']['stop'][] = 'exitIntentStop';
-
-
-$GLOBALS['TL_MHG']['exitintentCookieTimers'] = array(
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '10',
-    '14',
-    '20',
-    '30',
-    '60',
-);
+$GLOBALS['FE_MOD']['Custom Elements']['exitintent'] = 'mhg\ModuleExitIntent';
 
 
 /**
