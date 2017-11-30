@@ -65,8 +65,10 @@ class ModuleExitIntent extends \Module {
         );
 
         $this->Template->vars = htmlspecialchars(json_encode($objVars));
+        $this->Template->article = '{{insert_article::' . $this->articleID . '}}';
         $this->Template->showLightbox = 1;
 
+        // cookie handling
         if ($objVars->cookie) {
             $intCookieDays = $objVars->cookie;
             $intCookieExpire = time() + ( 86400 * $intCookieDays );
