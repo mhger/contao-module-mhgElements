@@ -50,7 +50,7 @@ class Elements {
         $strTemplate = $objTemplate->getName();
 
         // continue only for supported elements / templates
-        if (!in_array($strTemplate, array('ce_headline', 'ce_text', 'ce_image', 'ce_hyperlink'))) {
+        if (!in_array($strTemplate, array('ce_headline', 'ce_text', 'ce_image')) && !$objTemplate->elementAnimationType) {
             return;
         }
 
@@ -62,7 +62,6 @@ class Elements {
         $strImageAnimationClass = $this->getAnimationClass($objTemplate, 'image');
         $strTextAnimationClass = $this->getAnimationClass($objTemplate, 'text');
 
-        // headlines
         if (0 === strpos($strTemplate, 'ce_headline')) {
             $objTemplate->class.= $strHeadlineAnimationClass;
         } elseif (0 === strpos($strTemplate, 'ce_text')) {
@@ -70,12 +69,10 @@ class Elements {
             $objTemplate->text = '<div class="text_container' . $strTextAnimationClass . '">' . $objTemplate->text . '</div>';
             // add image animation class
             $objTemplate->floatClass.= $strImageAnimationClass;
-        }
-
-        // universal
-        if (0 === strpos($strTemplate, 'ce_hyperlink')) {
+        } elseif ($objTemplate->elementAnimationType) {
             $objTemplate->class.= $strElementAnimationClass;
         }
+
         /**
          * Add animation css classes also into the template object for individual use (fe. custom or modified templates)
          */

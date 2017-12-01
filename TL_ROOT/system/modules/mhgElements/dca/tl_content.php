@@ -24,28 +24,6 @@ mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},elem
 /**
  * add DCA fields
  */
-mhg\Dca::addField('tl_content', 'headlineAnimationType', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['headlineAnimationType'],
-    'exclude' => true,
-    'default' => '',
-    'inputType' => 'select',
-    'options_callback' => array('tl_content_mhgElements', 'getAnimationsText'),
-    'reference' => &$GLOBALS['TL_LANG']['tl_content'],
-    'eval' => array('tl_class' => 'w50'),
-    'sql' => "varchar(32) NOT NULL default ''"
-));
-
-mhg\Dca::addField('tl_content', 'headlineAnimationDelay', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['headlineAnimationDelay'],
-    'exclude' => true,
-    'default' => '',
-    'inputType' => 'select',
-    'options_callback' => array('tl_content_mhgElements', 'getAnimationsDelay'),
-    'reference' => &$GLOBALS['TL_LANG']['tl_content'],
-    'eval' => array('tl_class' => 'w50'),
-    'sql' => "char(1) NOT NULL default ''"
-));
-
 mhg\Dca::addField('tl_content', 'elementAnimationType', array(
     'label' => &$GLOBALS['TL_LANG']['tl_content']['elementAnimationType'],
     'exclude' => true,
@@ -73,6 +51,28 @@ mhg\Dca::addField('tl_content', 'elementAnimationRepeat', array(
     'exclude' => true,
     'inputType' => 'checkbox',
     'eval' => array('tl_class' => 'w50 m12'),
+    'sql' => "char(1) NOT NULL default ''"
+));
+
+mhg\Dca::addField('tl_content', 'headlineAnimationType', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_content']['headlineAnimationType'],
+    'exclude' => true,
+    'default' => '',
+    'inputType' => 'select',
+    'options_callback' => array('tl_content_mhgElements', 'getAnimationsText'),
+    'reference' => &$GLOBALS['TL_LANG']['tl_content'],
+    'eval' => array('tl_class' => 'w50'),
+    'sql' => "varchar(32) NOT NULL default ''"
+));
+
+mhg\Dca::addField('tl_content', 'headlineAnimationDelay', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_content']['headlineAnimationDelay'],
+    'exclude' => true,
+    'default' => '',
+    'inputType' => 'select',
+    'options_callback' => array('tl_content_mhgElements', 'getAnimationsDelay'),
+    'reference' => &$GLOBALS['TL_LANG']['tl_content'],
+    'eval' => array('tl_class' => 'w50'),
     'sql' => "char(1) NOT NULL default ''"
 ));
 
