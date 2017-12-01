@@ -1,58 +1,128 @@
 /**
- * exitIntentLightbox
- * shows messages on mouseout event (this is the css)
- * Created on : 04.07.2016, 13:03:15
+ * exitIntentLayer CSS
 **/
+body.exitintent_open .exitintent_layer {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+}
 
-.lightbox {
-    /** Hide the lightbox */
+.exitintent_layer {
     display: none;
-    /** Apply basic lightbox styling */
-    position: fixed;
-    z-index: 9999;
-    width: 100%;
-    height: 100%;
+    visibility: hidden;
+    opacity: 0;
+
+    position: absolute;
     top: 0;
     left: 0;
-    color:#333333;
+    right: 0;    
+    bottom: 0;
+    height: 100%;    
+    width: 100%;
+    background: transparent;
 }
-.lightbox:after {
-    content: '';
-    display: table;
-    clear: both;
+
+.exitintent_layer.light {
+    background: rgba(255,255,255,.66);
 }
-.lightbox .box {
-    width: -webkit-min-content;
-    width: -moz-min-content;
-    width: min-content;
-    min-width:500px;
-    margin: 2% auto;
-    padding:20px;
-    background-color:#FFF;
-    box-shadow: 0px 1px 26px -3px #777777;
+
+.exitintent_layer.light * {
+    color: #171717;
 }
-.lightbox .title {
-    margin:0;
-    padding:0 0 10px 0px;
-    border-bottom:1px #ccc solid;
-    font-size:22px;
+
+
+.exitintent_layer.dark {
+    background: rgba(51,51,51,.9);
 }
-.lightbox .content {
-    display:block;
-    padding:10px 0 0 0px;
-    font-size:18px;
-    line-height:22px;
+
+.exitintent_layer.dark * {
+    color: #FFF;
 }
-.lightbox .close {
-    float:right;
-    display:block;
-    text-decoration:none;
-    font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:22px;
-    color:#858585;
+
+.exitintent_layer.dark .inside_wrapper {
+    background: #171717;
 }
-.lightbox .open {
-    /** Show lightbox when mouse leaves the browser window */
+
+.exitintent_layer .inside_wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+
     display: block;
-    outline: none;
+    width: 900px;
+    height: auto;
+    margin: 0 auto;
+    background: #FFF;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.exitintent_layer .inside_wrapper:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em;
+}
+
+.exitintent_layer .content_container {
+    display: inline-block;
+    width: 100%;
+    padding: 5em 3em;
+    text-align: center;
+    vertical-align: middle;
+    white-space: normal;
+}
+
+.exitintent_layer .close {
+    position: absolute;
+    top: .5em;
+    right: .5em;
+    display: block;
+    width: 2em;
+    height: 2em;
+    text-indent: 2em;
+    line-height: 1;
+    font-style: normal;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    opacity: .35;
+}
+
+.exitintent_layer .close:hover {
+    opacity: 1;
+}
+
+.exitintent_layer .close:before {
+    content: '✘';
+    font-size: 2em;
+    margin: 0 1em 0 -1em;
+}
+
+@media screen and (max-width: 1024px) {
+    .exitintent_layer .inside_wrapper {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none;
+    }
+
+    .exitintent_layer .content_container {
+        padding: 2em 1em;
+    }
 }

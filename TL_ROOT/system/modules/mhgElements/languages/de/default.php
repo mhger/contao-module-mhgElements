@@ -11,4 +11,10 @@
  */
 $GLOBALS['TL_LANG']['loading'] = 'Seite wird geladen';
 
-$GLOBALS['TL_LANG']['FMD']['exitintent'] = array('Exit Intent Layer / Popup','Fügt der Seite ein Exit Intent Popup / Layer hinzu.');
+$GLOBALS['TL_LANG']['FMD']['exitintent'] = array('Exit Intent Layer / Popup', 'Fügt der Seite ein Exit Intent Popup / Layer hinzu.');
+
+$GLOBALS['TL_LANG']['MSC']['exitIntentTheme'] = array(
+    'default' => 'Transparenter Layer',
+    'light' => 'Helles Farbschema',
+    'dark' => 'Dunkles Farbschema',
+);

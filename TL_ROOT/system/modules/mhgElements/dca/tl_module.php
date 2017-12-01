@@ -13,7 +13,7 @@
  * add DCA palette
  */
 $GLOBALS['TL_DCA']['tl_module']['palettes']['exitintent'] = '{title_legend},name,headline,type;'
-        . '{config_legend},articleID,exitintent_steps,exitintent_delay,exitintent_distance,exitintent_scroll,exitintent_timer,exitintent_cookie;'
+        . '{config_legend},articleID,exitIntentSteps,exitIntentDelay,exitIntentCookie,exitIntentEdge,exitIntentScroll,exitIntentTimer,exitIntentModal,exitIntentTheme;'
         . '{protected_legend:hide},guests,protected;{expert_legend:hide},cssID;';
 
 /**
@@ -29,8 +29,8 @@ mhg\Dca::addField('tl_module', 'articleID', array(
     'sql' => "int(10) unsigned NOT NULL default '0'"
 ));
 
-mhg\Dca::addField('tl_module', 'exitintent_steps', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitintent_steps'],
+mhg\Dca::addField('tl_module', 'exitIntentSteps', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentSteps'],
     'default' => '1',
     'exclude' => true,
     'inputType' => 'text',
@@ -39,17 +39,26 @@ mhg\Dca::addField('tl_module', 'exitintent_steps', array(
     'sql' => "int(2) unsigned NOT NULL default '1'"
 ));
 
-mhg\Dca::addField('tl_module', 'exitintent_delay', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitintent_delay'],
-    'default' => '500',
+mhg\Dca::addField('tl_module', 'exitIntentDelay', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentDelay'],
+    'default' => '30',
     'exclude' => true,
     'inputType' => 'text',
     'eval' => array('rgxp' => 'digit', 'maxlength' => 10, 'tl_class' => 'w50'),
-    'sql' => "int(10) unsigned NOT NULL default '500'"
+    'sql' => "int(10) unsigned NOT NULL default '30'"
 ));
 
-mhg\Dca::addField('tl_module', 'exitintent_distance', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitintent_distance'],
+mhg\Dca::addField('tl_module', 'exitIntentEdge', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentEdge'],
+    'default' => '0',
+    'exclude' => true,
+    'inputType' => 'text',
+    'eval' => array('mandatory' => false, 'rgxp' => 'digit', 'maxlength' => 10, 'tl_class' => 'w50 clr'),
+    'sql' => "int(10) unsigned NOT NULL default '0'"
+));
+
+mhg\Dca::addField('tl_module', 'exitIntentScroll', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentScroll'],
     'default' => '0',
     'exclude' => true,
     'inputType' => 'text',
@@ -57,8 +66,8 @@ mhg\Dca::addField('tl_module', 'exitintent_distance', array(
     'sql' => "int(10) unsigned NOT NULL default '0'"
 ));
 
-mhg\Dca::addField('tl_module', 'exitintent_scroll', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitintent_scroll'],
+mhg\Dca::addField('tl_module', 'exitIntentTimer', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentTimer'],
     'default' => '0',
     'exclude' => true,
     'inputType' => 'text',
@@ -66,22 +75,29 @@ mhg\Dca::addField('tl_module', 'exitintent_scroll', array(
     'sql' => "int(10) unsigned NOT NULL default '0'"
 ));
 
-mhg\Dca::addField('tl_module', 'exitintent_timer', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitintent_timer'],
-    'default' => '0',
-    'exclude' => true,
-    'inputType' => 'text',
-    'eval' => array('mandatory' => false, 'rgxp' => 'digit', 'maxlength' => 10, 'tl_class' => 'w50'),
-    'sql' => "int(10) unsigned NOT NULL default '0'"
-));
-
-mhg\Dca::addField('tl_module', 'exitintent_cookie', array(
-    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitintent_cookie'],
+mhg\Dca::addField('tl_module', 'exitIntentCookie', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentCookie'],
     'default' => '1',
     'exclude' => true,
     'inputType' => 'text',
     'eval' => array('mandatory' => false, 'rgxp' => 'digit', 'maxlength' => 10, 'tl_class' => 'w50'),
     'sql' => "int(10) unsigned NOT NULL default '1'"
+));
+
+mhg\Dca::addField('tl_module', 'exitIntentTheme', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentTheme'],
+    'inputType' => 'select',
+    'options' => array('default', 'light', 'dark'),
+    'reference' => &$GLOBALS['TL_LANG']['MSC']['exitIntentTheme'],
+    'eval' => array('tl_class' => 'w50 clr'),
+    'sql' => "varchar(25) NOT NULL default 'default'"
+));
+
+mhg\Dca::addField('tl_module', 'exitIntentModal', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentModal'],
+    'inputType' => 'checkbox',
+    'eval' => array('tl_class' => 'w50 clr'),
+    'sql' => "char(1) NOT NULL default ''"
 ));
 
 

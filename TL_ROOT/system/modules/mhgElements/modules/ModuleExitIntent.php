@@ -25,9 +25,10 @@ class ModuleExitIntent extends \Module {
     protected $strTemplate = 'mod_exitintent';
 
     /**
-     * Do not display the module if there are no menu items
+     * Generate the module
      *
-     * @return string
+     * @param   void
+     * @return  string
      */
     public function generate() {
         if (TL_MODE == 'BE') {
@@ -53,44 +54,46 @@ class ModuleExitIntent extends \Module {
 
     /**
      * Generate the module
+     * 
+     * @param   void
+     * @return  void
      */
     protected function compile() {
-        $objVars = (object) array(
-                    'steps' => $this->exitintent_steps,
-                    'delay' => $this->exitintent_delay,
-                    'distance' => $this->exitintent_distance,
-                    'scroll' => $this->exitintent_scroll,
-                    'cookie' => $this->exitintent_cookie,
-                    'timer' => $this->exitintent_timer
-        );
-
-        $this->Template->vars = htmlspecialchars(json_encode($objVars));
-        $this->Template->article = '{{insert_article::' . $this->articleID . '}}';
-        $this->Template->showLightbox = 1;
+        global $objPage;
+        $pageID = $objPage->id;
+        $showLayer = 1;
 
         // cookie handling
-        if ($objVars->cookie) {
-            $intCookieDays = $objVars->cookie;
+        if ($this->exitIntentCookie) {
+            $intCookieDays = $this->exitIntentCookie;
             $intCookieExpire = time() + ( 86400 * $intCookieDays );
-            $strCookieName = 'exitintentCookie' . $this->id;
+            $strCookieName = 'exitIntentCookie' . $pageID;
             $strCookiePath = '';
             $strCookieDomain = '';
             $strCookieSecure = '';
             $strCookieHttponly = '';
 
-
-            if (isset($_COOKIE[$strCookieName])) {
-                //current time larger than expiration date -> show lightbox and set cookie again
-                if (time() >= $_COOKIE[$strCookieName]) {
-                    $this->Template->showLightbox = 1;
-                    setcookie($strCookieName, $intCookieExpire, $intCookieExpire, $strCookiePath, $strCookieDomain, $strCookieSecure, $strCookieHttponly);
-                } else {
-                    $this->Template->showLightbox = 0;
-                }
-            } else {
+            if (!isset($_COOKIE[$strCookieName]) || (time() >= $_COOKIE[$strCookieName])) {
+                // Sets cookie if there was none or current time larger than expiration date (show lightbox and set cookie again)
                 setcookie($strCookieName, $intCookieExpire, $intCookieExpire, $strCookiePath, $strCookieDomain, $strCookieSecure, $strCookieHttponly);
-                $this->Template->showLightbox = 1;
+            } else {
+                $showLayer = 0;
             }
         }
+
+        // prepare script data
+        $objVars = (object) array(
+                    'show' => $showLayer,
+                    'steps' => $this->exitIntentSteps,
+                    'delay' => $this->exitIntentDelay,
+                    'edge' => (!$this->exitIntentEdge && !$this->exitIntentScroll && !$this->exitIntentTimer) ? 1 : $this->exitIntentEdge,
+                    'scroll' => $this->exitIntentScroll,
+                    'timer' => $this->exitIntentTimer,
+                    'theme' => $this->exitIntentTheme,
+                    'modal' => $this->exitIntentModal,
+        );
+
+        $this->Template->vars = htmlspecialchars(json_encode($objVars));
+        $this->Template->article = '{{insert_article::' . $this->articleID . '}}';
     }
 }
