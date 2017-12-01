@@ -1,15 +1,20 @@
 # Contao Extension [mhgElements]
 
-New Contao content elements and modules.
-
-- Exitintent
+This bundle contains a collection of content elements, modules and modifications for the Contao CMS.
 
 Idea and realisation: <https://www.medienhaus-gersoene.de>
 
 
 ## Features
-- animations for content elements and modules
-- improvments for existing / standard Contao content elements and modules
+- Animations for content elements (headlines, texts, images, links and galleries)
+- Exit Intent Layer / Popup
+- Page Loader Layer 
+- Additional wrapper elements and CSS classes
+- Improvments for existing / standard Contao content elements and modules
+
+
+### Dependencies of this extension
+- [mhgCore]
 
 
 ### Manual
@@ -29,4 +34,4 @@ LGPL 3.0+
 
 
 ### Release
-2017-11-29
+2017-12-02
