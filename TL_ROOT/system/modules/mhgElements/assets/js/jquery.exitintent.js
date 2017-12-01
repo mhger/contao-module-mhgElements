@@ -131,7 +131,6 @@ var exitintent = {
         direction = typeof direction === 'undefined' ? null : direction;
 
         if (null !== direction) {
-            return false;
             if (direction === 'top' && this.cursor.y <= this.config.edge) {
                 return true;
             } else if (direction === 'bottom' && this.cursor.y >= (this.win.height() - this.config.edge)) {

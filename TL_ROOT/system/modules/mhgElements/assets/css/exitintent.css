@@ -1,6 +1,12 @@
 /**
  * exitIntentLayer CSS
 **/
+body.exitintent_open {
+    overflow: hidden;
+    overflow-y: hidden;
+    height: 100vh;
+    max-height: 100vh;
+}
 body.exitintent_open .exitintent_layer {
     display: block;
     visibility: visible;
@@ -30,7 +36,6 @@ body.exitintent_open .exitintent_layer {
 .exitintent_layer.light * {
     color: #171717;
 }
-
 
 .exitintent_layer.dark {
     background: rgba(51,51,51,.9);
@@ -64,6 +69,20 @@ body.exitintent_open .exitintent_layer {
     white-space: nowrap;
 }
 
+.exitintent_layer.fullsize .inside_wrapper {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+
+}
+
 .exitintent_layer .inside_wrapper:before {
     content: '';
     display: inline-block;
@@ -75,6 +94,7 @@ body.exitintent_open .exitintent_layer {
 .exitintent_layer .content_container {
     display: inline-block;
     width: 100%;
+    max-width: 900px;
     padding: 5em 3em;
     text-align: center;
     vertical-align: middle;

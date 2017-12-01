@@ -16,5 +16,7 @@ $GLOBALS['TL_LANG']['FMD']['exitintent'] = array('Exit Intent Layer / Popup', 'F
 $GLOBALS['TL_LANG']['MSC']['exitIntentTheme'] = array(
     'default' => 'Transparenter Layer',
     'light' => 'Helles Farbschema',
+    'light fullsize' => 'Helles Farbschema (Fullsize)',
     'dark' => 'Dunkles Farbschema',
+    'dark fullsize' => 'Dunkles Farbschema (Fullsize)',
 );

@@ -87,7 +87,7 @@ mhg\Dca::addField('tl_module', 'exitIntentCookie', array(
 mhg\Dca::addField('tl_module', 'exitIntentTheme', array(
     'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentTheme'],
     'inputType' => 'select',
-    'options' => array('default', 'light', 'dark'),
+    'options' => array('default', 'light', 'light fullsize', 'dark', 'dark fullsize'),
     'reference' => &$GLOBALS['TL_LANG']['MSC']['exitIntentTheme'],
     'eval' => array('tl_class' => 'w50 clr'),
     'sql' => "varchar(25) NOT NULL default 'default'"
