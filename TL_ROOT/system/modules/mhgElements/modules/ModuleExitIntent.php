@@ -89,12 +89,24 @@ class ModuleExitIntent extends \Module {
                     'edge' => (!$this->exitIntentEdge && !$this->exitIntentScroll && !$this->exitIntentTimer) ? 1 : $this->exitIntentEdge,
                     'scroll' => $this->exitIntentScroll,
                     'timer' => $this->exitIntentTimer,
+                    'modal' => $this->exitIntentModal,
+                    'full' => $this->exitIntentFull,
                     'theme' => $this->exitIntentTheme,
-                    'modal' => $this->exitIntentModal
+                    'class' => $this->cssID[1]
         );
 
-        $this->Template->vars = htmlspecialchars(json_encode($objVars));
+        // Add background image
+        if ($this->singleSRC != '') {
+            $objModel = \FilesModel::findByUuid($this->singleSRC);
+
+            if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path)) {
+                $this->singleSRC = $objModel->path;
+                $this->Template->image = ' style="background-image:url(' . $this->singleSRC . ');"';
+            }
+        }
+
         $this->Template->article = '{{insert_article::' . $this->articleID . '}}';
-        $this->Template->labelClose = '{{label::MSC:close}}';
+        $this->Template->labelClose = $GLOBALS['TL_LANG']['MSC']['close'];
+        $this->Template->vars = htmlspecialchars(json_encode($objVars));
     }
 }

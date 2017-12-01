@@ -1,5 +1,5 @@
-<div class="<?=$this->class?>" data-json="<?=$this->vars?>">
-    <div class="inside_wrapper">
+<div <?=$this->cssID;?> class="<?=$this->class?>" data-json="<?=$this->vars?>">
+    <div class="inside_wrapper" <?= $this->image?>>
         <div class="content_container">
         <?php if($this->headline):?>
             <<?=$this->hl?>><?=$this->headline?></<?=$this->hl?>>

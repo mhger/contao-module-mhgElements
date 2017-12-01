@@ -17,6 +17,9 @@ $GLOBALS['TL_LANG']['tl_module']['exitIntentEdge'] = array('Reaktionsbereich', '
 $GLOBALS['TL_LANG']['tl_module']['exitIntentScroll'] = array('Scroll-Distanz', 'Vertikale Distanz in Pixel, nach welcher der Layer angezeigt wird.');
 $GLOBALS['TL_LANG']['tl_module']['exitIntentTimer'] = array('Automatisch anzeigen', 'Sekunden nach denen der Layer automatisch angezeigt wird. Geben Sie 0 ein, um diese Funktion zu deaktivieren.');
 $GLOBALS['TL_LANG']['tl_module']['exitIntentTheme'] = array('Farbschema', 'Wählen Sie das Farbschema für den Exit Intent Layer.');
-$GLOBALS['TL_LANG']['tl_module']['exitIntentModal'] = array('Modaler Layer', 'Wenn aktivert, lässt sich der Layer nur mit Klick auf das X Symbol schließen.');
+$GLOBALS['TL_LANG']['tl_module']['exitIntentModal'] = array('Modaler Layer', 'Wenn aktivert, lässt sich der Layer nur mit Klick auf das X-Symbol schließen.');
+$GLOBALS['TL_LANG']['tl_module']['exitIntentFull'] = array('Vollbild', 'Wenn aktivert, wird der Layer vollflächig dargestellt.');
+$GLOBALS['TL_LANG']['tl_module']['exitIntentImage'] = array('Hintergrundbild', 'Bitte wählen Sie eine Datei aus der Dateiübersicht.');
+
 
 

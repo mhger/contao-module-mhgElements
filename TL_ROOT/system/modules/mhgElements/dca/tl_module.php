@@ -13,7 +13,7 @@
  * add DCA palette
  */
 $GLOBALS['TL_DCA']['tl_module']['palettes']['exitintent'] = '{title_legend},name,headline,type;'
-        . '{config_legend},articleID,exitIntentSteps,exitIntentDelay,exitIntentCookie,exitIntentEdge,exitIntentScroll,exitIntentTimer,exitIntentModal,exitIntentTheme;'
+        . '{config_legend},articleID,exitIntentSteps,exitIntentDelay,exitIntentCookie,exitIntentEdge,exitIntentScroll,exitIntentTimer,,exitIntentFull,exitIntentModal,exitIntentTheme,singleSRC;'
         . '{protected_legend:hide},guests,protected;{expert_legend:hide},cssID;';
 
 /**
@@ -87,18 +87,31 @@ mhg\Dca::addField('tl_module', 'exitIntentCookie', array(
 mhg\Dca::addField('tl_module', 'exitIntentTheme', array(
     'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentTheme'],
     'inputType' => 'select',
-    'options' => array('default', 'light', 'light fullsize', 'dark', 'dark fullsize'),
+    'options' => array('default', 'dark', 'light'),
     'reference' => &$GLOBALS['TL_LANG']['MSC']['exitIntentTheme'],
     'eval' => array('tl_class' => 'w50 clr'),
     'sql' => "varchar(25) NOT NULL default 'default'"
 ));
 
+mhg\Dca::addField('tl_module', 'exitIntentFull', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentFull'],
+    'inputType' => 'checkbox',
+    'eval' => array('tl_class' => 'w50 m12 clr'),
+    'sql' => "char(1) NOT NULL default ''"
+));
+
 mhg\Dca::addField('tl_module', 'exitIntentModal', array(
     'label' => &$GLOBALS['TL_LANG']['tl_module']['exitIntentModal'],
     'inputType' => 'checkbox',
-    'eval' => array('tl_class' => 'w50 clr'),
+    'eval' => array('tl_class' => 'w50 m12'),
     'sql' => "char(1) NOT NULL default ''"
 ));
+
+if (is_array($GLOBALS['TL_DCA']['tl_module']['fields']['singleSRC']['load_callback'])) {
+    $GLOBALS['TL_DCA']['tl_module']['fields']['singleSRC']['load_callback'][] = array('tl_module_mhgElements', 'setSingleSrcFlags');
+} else {
+    $GLOBALS['TL_DCA']['tl_module']['fields']['singleSRC']['load_callback'] = array(array('tl_module_mhgElements', 'setSingleSrcFlags'));
+}
 
 
 /**
@@ -153,5 +166,15 @@ class tl_module_mhgElements extends tl_module {
         }
 
         return $arrAlias;
+    }
+
+    public function setSingleSrcFlags($varValue, DataContainer $dc) {
+        if ($dc->activeRecord && $dc->activeRecord->type === 'exitintent') {
+            $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['extensions'] = Config::get('validImageTypes');
+            $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['mandatory'] = false;
+            $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['label'] = &$GLOBALS['TL_LANG']['tl_module']['exitIntentImage'];
+        }
+
+        return $varValue;
     }
 }

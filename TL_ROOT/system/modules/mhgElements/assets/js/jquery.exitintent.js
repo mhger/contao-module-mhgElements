@@ -21,6 +21,7 @@ var exitintent = {
             this.config.scroll = parseInt(this.config.scroll);
             this.config.timer = parseInt(this.config.timer);
             this.config.modal = parseInt(this.config.modal);
+            this.config.full = parseInt(this.config.full);
 
             if (this.config.show) {
                 this.counter = 0;
@@ -32,7 +33,6 @@ var exitintent = {
         return (this.config.steps < 1 || this.counter < this.config.steps) ? false : true;
     },
     init: function () {
-        console.log('exitintent init');
         var that = this;
 
         if (!this.limit()) {
@@ -81,7 +81,6 @@ var exitintent = {
         }, t);
     },
     openLayer: function (trigger) {
-        console.log('trigger open: ' + trigger);
         this.stop();
 
         if (!this.isOpen && !this.limit()) {
@@ -89,7 +88,13 @@ var exitintent = {
                     body = $('body');
 
             if (this.layer === null) {
-                this.layer = $('<div class="exitintent_layer ' + this.config.theme + '">' + this.element.html() + '</div>');
+                var css = 'exitintent_layer'
+                        + (this.config.full ? ' fullsize' : '')
+                        + (this.config.theme !== '' ? ' ' + this.config.theme : '')
+                        + (this.config.class !== '' ? ' ' + this.config.class : ''),
+                        content = this.element.html();
+
+                this.layer = $('<div class="' + css + '">' + content + '</div>');
                 body.append(this.layer);
             }
 

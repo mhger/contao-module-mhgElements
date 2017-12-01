@@ -19,7 +19,9 @@ mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},head
 // ce_image
 mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,imageAnimationType,imageAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('image'));
 // ce_hyperlink, ce_gallery
-mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},elementAnimationType,elementAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('hyperlink','gallery'));
+mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},elementAnimationType,elementAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('hyperlink', 'gallery'));
+
+
 /**
  * add DCA fields
  */
