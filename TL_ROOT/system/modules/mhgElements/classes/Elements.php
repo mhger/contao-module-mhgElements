@@ -33,10 +33,6 @@ class Elements {
             if (in_array('j_pageloader', $arrJquery)) {
                 $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/pageloader.css||static';
             }
-
-            // add JS & CSS files static to be compressed
-            $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/animate.css||static';
-            $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mhgElements/assets/js/jquery.animate.js|static';
         }
     }
 
@@ -80,6 +76,20 @@ class Elements {
         $objTemplate->headlineAnimationClass = $strHeadlineAnimationClass;
         $objTemplate->imageAnimationClass = $strImageAnimationClass;
         $objTemplate->textAnimationClass = $strTextAnimationClass;
+
+        // add required JS and CSS files
+        if ($strElementAnimationClass || $strHeadlineAnimationClass || $strImageAnimationClass || $strTextAnimationClass) {
+            $strFileCss = 'system/modules/mhgElements/assets/css/animate.css||static';
+            $strFileJavascript = 'system/modules/mhgElements/assets/js/jquery.animate.js|static';
+
+            if (!in_array($strFileCss, $GLOBALS['TL_CSS'])) {
+                $GLOBALS['TL_CSS'][] = $strFileCss;
+            }
+
+            if (!in_array($strFileJavascript, $GLOBALS['TL_JAVASCRIPT'])) {
+                $GLOBALS['TL_JAVASCRIPT'][] = $strFileJavascript;
+            }
+        }
     }
 
     /**
@@ -141,7 +151,7 @@ class Elements {
     /**
      * Hook.
      * 
-     * @param   object $objTemplate
+     * @param   object $objElement
      * @param   string $strBuffer
      * @return  string
      */

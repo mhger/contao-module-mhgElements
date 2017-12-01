@@ -43,11 +43,9 @@ class ModuleExitIntent extends \Module {
             return $objTemplate->parse();
         }
 
-        /**
-         * @todo    remove or change parama time()
-         */
-        $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/exitintent.css?v=' . time(); #||static';
-        $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mhgElements/assets/js/jquery.exitintent.js?v=' . time(); #|static';        
+        // add required JS and CSS files
+        $GLOBALS['TL_CSS'][] = 'system/modules/mhgElements/assets/css/exitintent.css||static';
+        $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mhgElements/assets/js/jquery.exitintent.js|static';
 
         return parent::generate();
     }
