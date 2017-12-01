@@ -12,10 +12,14 @@
 /**
  * alter DCA palettes and subpalettes
  */
+// ce_headline
 mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('headline'));
+// ce_text
 mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,textAnimationType,textAnimationDelay,imageAnimationType,imageAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('text'));
+// ce_image
 mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,imageAnimationType,imageAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('image'));
-
+// ce_hyperlink
+mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},elementAnimationType,elementAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('hyperlink'));
 
 /**
  * add DCA fields
@@ -33,6 +37,28 @@ mhg\Dca::addField('tl_content', 'headlineAnimationType', array(
 
 mhg\Dca::addField('tl_content', 'headlineAnimationDelay', array(
     'label' => &$GLOBALS['TL_LANG']['tl_content']['headlineAnimationDelay'],
+    'exclude' => true,
+    'default' => '',
+    'inputType' => 'select',
+    'options_callback' => array('tl_content_mhgElements', 'getAnimationsDelay'),
+    'reference' => &$GLOBALS['TL_LANG']['tl_content'],
+    'eval' => array('tl_class' => 'w50'),
+    'sql' => "char(1) NOT NULL default ''"
+));
+
+mhg\Dca::addField('tl_content', 'elementAnimationType', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_content']['elementAnimationType'],
+    'exclude' => true,
+    'default' => '',
+    'inputType' => 'select',
+    'options_callback' => array('tl_content_mhgElements', 'getAnimationsElement'),
+    'reference' => &$GLOBALS['TL_LANG']['tl_content'],
+    'eval' => array('tl_class' => 'w50'),
+    'sql' => "varchar(32) NOT NULL default ''"
+));
+
+mhg\Dca::addField('tl_content', 'elementAnimationDelay', array(
+    'label' => &$GLOBALS['TL_LANG']['tl_content']['elementAnimationDelay'],
     'exclude' => true,
     'default' => '',
     'inputType' => 'select',
@@ -130,6 +156,16 @@ class tl_content_mhgElements extends tl_content {
         }
 
         return $delays;
+    }
+
+    /**
+     * @param   void
+     * @return  array
+     */
+    public function getAnimationsElement() {
+        $animations = $this->getAnimations();
+
+        return $animations;
     }
 
     /**

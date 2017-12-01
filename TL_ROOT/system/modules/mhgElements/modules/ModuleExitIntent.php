@@ -91,6 +91,7 @@ class ModuleExitIntent extends \Module {
                     'timer' => $this->exitIntentTimer,
                     'theme' => $this->exitIntentTheme,
                     'modal' => $this->exitIntentModal,
+                    'labelClose' => '{{label::MSC:close}}'
         );
 
         $this->Template->vars = htmlspecialchars(json_encode($objVars));

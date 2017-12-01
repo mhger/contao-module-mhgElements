@@ -11,6 +11,8 @@
  */
 $GLOBALS['TL_LANG']['tl_content']['animation_legend'] = 'Element-Animationen';
 
+$GLOBALS['TL_LANG']['tl_content']['elementAnimationType'] = array('Art der Elementanimation', 'Wählen Sie hier die Art der Elementanimation aus.');
+$GLOBALS['TL_LANG']['tl_content']['elementAnimationDelay'] = array('Verzögerung der Elementanimation', 'Wählen Sie die Verzögerung der Elementanimation aus.');
 $GLOBALS['TL_LANG']['tl_content']['elementAnimationRepeat'] = array('Animation wiederholen', 'Die Animation mehrfach ausführen.');
 $GLOBALS['TL_LANG']['tl_content']['headlineAnimationType'] = array('Art der Überschriftanimation', 'Wählen Sie hier die Art der Überschriftanimation aus.');
 $GLOBALS['TL_LANG']['tl_content']['headlineAnimationDelay'] = array('Verzögerung der Überschriftanimation', 'Wählen Sie die Verzögerung der Überschriftanimation aus.');

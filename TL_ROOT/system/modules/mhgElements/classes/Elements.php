@@ -50,13 +50,14 @@ class Elements {
         $strTemplate = $objTemplate->getName();
 
         // continue only for supported elements / templates
-        if (!in_array($strTemplate, array('ce_headline', 'ce_text', 'ce_image'))) {
+        if (!in_array($strTemplate, array('ce_headline', 'ce_text', 'ce_image', 'ce_hyperlink'))) {
             return;
         }
 
         /**
          * Add animation classes - differs by content type
          */
+        $strElementAnimationClass = $this->getAnimationClass($objTemplate, 'element');
         $strHeadlineAnimationClass = $this->getAnimationClass($objTemplate, 'headline');
         $strImageAnimationClass = $this->getAnimationClass($objTemplate, 'image');
         $strTextAnimationClass = $this->getAnimationClass($objTemplate, 'text');
@@ -71,9 +72,14 @@ class Elements {
             $objTemplate->floatClass.= $strImageAnimationClass;
         }
 
+        // universal
+        if (0 === strpos($strTemplate, 'ce_hyperlink')) {
+            $objTemplate->class.= $strElementAnimationClass;
+        }
         /**
          * Add animation css classes also into the template object for individual use (fe. custom or modified templates)
          */
+        $objTemplate->elementAnimationClass = $strElementAnimationClass;
         $objTemplate->headlineAnimationClass = $strHeadlineAnimationClass;
         $objTemplate->imageAnimationClass = $strImageAnimationClass;
         $objTemplate->textAnimationClass = $strTextAnimationClass;
@@ -181,7 +187,7 @@ class Elements {
         $strType = $type . 'AnimationType';
         $strTypeDelay = $type . 'AnimationDelay';
 
-        if (!$objElement->$strType || !in_array($type, array('headline', 'text', 'image'))) {
+        if (!$objElement->$strType || !in_array($type, array('element', 'headline', 'text', 'image'))) {
             return '';
         }
 

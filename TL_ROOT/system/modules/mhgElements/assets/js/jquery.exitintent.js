@@ -89,7 +89,7 @@ var exitintent = {
                     body = $('body');
 
             if (this.layer === null) {
-                this.layer = $('<div class="exitintent_layer ' + this.config.theme + '"><div class="inside_wrapper"><i class="close">X</i>' + this.element.html() + '</div></div>');
+                this.layer = $('<div class="exitintent_layer ' + this.config.theme + '"><div class="inside_wrapper"><i class="close" title="' + this.config.labelClose + '">' + this.config.labelClose + '</i>' + this.element.html() + '</div></div>');
                 body.append(this.layer);
             }
 
