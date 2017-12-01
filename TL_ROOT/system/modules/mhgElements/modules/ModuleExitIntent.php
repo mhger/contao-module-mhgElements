@@ -90,11 +90,11 @@ class ModuleExitIntent extends \Module {
                     'scroll' => $this->exitIntentScroll,
                     'timer' => $this->exitIntentTimer,
                     'theme' => $this->exitIntentTheme,
-                    'modal' => $this->exitIntentModal,
-                    'labelClose' => '{{label::MSC:close}}'
+                    'modal' => $this->exitIntentModal
         );
 
         $this->Template->vars = htmlspecialchars(json_encode($objVars));
         $this->Template->article = '{{insert_article::' . $this->articleID . '}}';
+        $this->Template->labelClose = '{{label::MSC:close}}';
     }
 }

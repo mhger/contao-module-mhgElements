@@ -1,9 +1,12 @@
 <div class="<?=$this->class?>" data-json="<?=$this->vars?>">
-    <div class="content_container">
+    <div class="inside_wrapper">
+        <div class="content_container">
         <?php if($this->headline):?>
             <<?=$this->hl?>><?=$this->headline?></<?=$this->hl?>>
         <?php endif; ?>
 
         <?= $this->article ?>
+        </div>
+        <i class="close" title="<?= $this->labelClose ?>"><?= $this->labelClose ?></i>
     </div>
 </div>
