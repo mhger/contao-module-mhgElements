@@ -12,9 +12,9 @@
 /**
  * add DCA palette
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['exitintent'] = '{title_legend},name,headline,type;'
+mhg\Dca::addPalette('tl_module', 'exitintent', '{title_legend},name,headline,type;'
         . '{config_legend},articleID,exitIntentSteps,exitIntentDelay,exitIntentCookie,exitIntentEdge,exitIntentScroll,exitIntentTimer,,exitIntentFull,exitIntentModal,exitIntentTheme,singleSRC;'
-        . '{protected_legend:hide},guests,protected;{expert_legend:hide},cssID;';
+        . '{protected_legend:hide},guests,protected;{expert_legend:hide},cssID;');
 
 /**
  * add DCA fields

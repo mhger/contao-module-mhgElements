@@ -13,13 +13,13 @@
  * alter DCA palettes and subpalettes
  */
 // ce_headline
-mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('headline'));
+mhg\Dca::alterPalettes('tl_content', '{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,elementAnimationRepeat;{template_legend:hide},', array('headline'));
 // ce_text
-mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,textAnimationType,textAnimationDelay,imageAnimationType,imageAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('text'));
+mhg\Dca::alterPalettes('tl_content', '{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,textAnimationType,textAnimationDelay,imageAnimationType,imageAnimationDelay,elementAnimationRepeat;{template_legend:hide},', array('text'));
 // ce_image
-mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,imageAnimationType,imageAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('image'));
+mhg\Dca::alterPalettes('tl_content', '{template_legend:hide},', '{animation_legend:hide},headlineAnimationType,headlineAnimationDelay,imageAnimationType,imageAnimationDelay,elementAnimationRepeat;{template_legend:hide},', array('image'));
 // ce_hyperlink, ce_gallery
-mhg\Dca::modifyPalettes('{template_legend:hide},', '{animation_legend:hide},elementAnimationType,elementAnimationDelay,elementAnimationRepeat;{template_legend:hide},', 'tl_content', array('hyperlink', 'gallery'));
+mhg\Dca::alterPalettes('tl_content', '{template_legend:hide},', '{animation_legend:hide},elementAnimationType,elementAnimationDelay,elementAnimationRepeat;{template_legend:hide},', array('hyperlink', 'gallery'));
 
 
 /**

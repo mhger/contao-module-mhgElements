@@ -12,7 +12,7 @@
 /**
  * alter DCA pallettes
  */
-mhg\Dca::modifyPalette(',guests', ',hide,guests', 'tl_article');
+mhg\Dca::alterPalette('tl_article', ',guests', ',hide,guests');
 
 
 /**
