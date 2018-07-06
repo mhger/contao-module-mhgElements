@@ -23,10 +23,10 @@ class Elements {
      * 
      * @param   object $objPage
      * @param   object $objLayout
-     * @param   object $objPage
+     * @param   object $objPty
      * @return  void
      */
-    public function getPageLayout($objPage, $objLayout, $objPage) {
+    public function getPageLayout($objPage, $objLayout, $objPty) {
         if ($objLayout->addJQuery) {
             $arrJquery = deserialize($objLayout->jquery, true);
 
